@@ -1,0 +1,208 @@
+@use '../../../styles/theme';
+
+.login_container {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: theme.$white100;
+  padding: 6px;
+
+  .content {
+    @include theme.flex(row, center, center);
+    height: 100%;
+    max-height: 100%;
+    gap: 12px;
+
+    .left {
+      position: relative;
+      width: 60%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .welcome_text {
+        @include theme.flex(column, center, center);
+        position: absolute;
+        top: 125px;
+        color: theme.$white100;
+
+        .title {
+          color: theme.$white100;
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 32px;
+        }
+
+        .sub_title {
+          color: theme.$white100;
+          font-weight: 600;
+          font-size: 42px;
+          line-height: 42px;
+        }
+      }
+    }
+
+    .right {
+      width: 40%;
+      @include theme.flex(column, center, center);
+
+      .form {
+        width: 100%;
+        @include theme.flex(column, center, center);
+        gap: 96px;
+
+        form {
+          @include theme.flex(column, flex-start, flex-start);
+          width: 100%;
+          max-width: 350px;
+          gap: 25px;
+
+          .part1 {
+            @include theme.flex(column, flex-start, flex-start);
+            gap: 5px;
+
+            .heading {
+              font-size: 52px;
+              font-weight: 500;
+            }
+
+            .sub_heading {
+              font-size: 20px;
+              font-weight: 400;
+              color: theme.$black700;
+            }
+          }
+
+          .part2 {
+            @include theme.flex(column, flex-start, flex-start);
+            width: 100%;
+            gap: 5px;
+            position: relative;
+
+            .input_email,
+            .input_password {
+              width: 100%;
+
+              input {
+                width: 100%;
+                padding: 10px 5px;
+                border: none;
+                outline: none;
+                font-size: 20px;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid theme.$black700;
+
+                &:focus {
+                  border-bottom: 1px solid theme.$purple700;
+                }
+              }
+
+              .formik_error {
+                @include theme.flex(row, center, flex-start);
+                padding: 4px 0;
+                gap: 5px;
+                min-height: 26px;
+
+                svg,
+                span {
+                  font-size: 14px;
+                  color: theme.$red400;
+                }
+
+                svg {
+                  max-width: 14px;
+                  max-height: 14px;
+                }
+              }
+
+              .marker {
+                top: 11px;
+                right: 100%;
+                display: none;
+                position: absolute;
+                color: theme.$green500;
+                transition: all 0.3s ease;
+              }
+
+              input:focus+.marker {
+                display: flex;
+              }
+            }
+
+            .input_password {
+              .marker {
+                top: 91px;
+              }
+            }
+          }
+
+          .part3 {
+            padding: 10px 0;
+            color: theme.$black700;
+            cursor: pointer;
+
+            &:hover {
+              color: theme.$purple500;
+            }
+          }
+
+          .part4 {
+            width: 100%;
+
+            button {
+              width: 100%;
+              border: none;
+              outline: none;
+              padding: 10px;
+              font-size: 16px;
+              cursor: pointer;
+              border-radius: 5px;
+              color: theme.$white100;
+              background: theme.$purple400;
+
+              &:hover {
+                background: theme.$purple500;
+              }
+            }
+          }
+        }
+
+        .signup {
+          width: 100%;
+          max-width: 350px;
+          @include theme.flex(row, center, space-between);
+        }
+      }
+    }
+
+    .left,
+    .right {
+      @include theme.flex(column, center, center);
+      border-radius: 12px;
+      height: 100%;
+
+      span {
+        font-size: 16px;
+        color: theme.$black700;
+      }
+
+      button {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 5px 25px;
+        border-radius: 5px;
+        color: theme.$white100;
+        background: theme.$purple400;
+
+        &:hover {
+          background: theme.$purple500;
+        }
+      }
+    }
+  }
+}

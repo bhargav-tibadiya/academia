@@ -1,0 +1,55 @@
+$black100 : #000000;
+$black700 : #666666;
+
+$white100 : #ffffff;
+$white200 : #F6F6F6;
+$white300 : #E5E5E5;
+$white400 : #D9D9D9;
+$white500 : #CCCCCC;
+$white600 : #BFBFBF;
+$white700 : #B3B3B3;
+$white800 : #A6A6A6;
+
+$purple100 : #E2D3F6;
+$purple200 : #C5A7EC;
+$purple300 : #A77CE3;
+$purple400 : #8A50D9;
+$purple500 : #6D24D0;
+$purple600 : #571DA6;
+$purple700 : #41167D;
+
+$green100 : #E5FFE5;
+$green200 : #BFFFBF;
+$green300 : #80FF80;
+$green400 : #40FF40;
+$green500 : #00FF00;
+$green600 : #00CC00;
+$green700 : #009900;
+
+$red100 : #FFE5E5;
+$red200 : #FFBFBF;
+$red300 : #FF8080;
+$red400 : #FF4040;
+$red500 : #FF0000;
+$red600 : #CC0000;
+$red700 : #990000;
+
+
+$error: #EF476F;
+
+@mixin flex ($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin resetSpacing() {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin occupyFullSpace() {
+  width: 100%;
+  height: 100%;
+}
