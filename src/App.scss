@@ -1,3 +1,4 @@
+@use './styles/theme';
 @import url('https://fonts.cdnfonts.com/css/satoshi');
 
 .RootContainer {
@@ -8,4 +9,16 @@
 input,
 button {
   font-family: 'Satoshi', sans-serif;
+}
+
+.RootContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: theme.$white200;
+}
+
+.RootContainer.dark {
+  background: theme.$black100;
 }

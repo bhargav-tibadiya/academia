@@ -1,0 +1,168 @@
+@use '../../../../styles/theme';
+
+.sidebar_container {
+  @include theme.flex(column, flex-start, space-between);
+  background: theme.$white100;
+  height: auto;
+  width: 330px;
+  border-radius: 10px;
+  border: 1px solid theme.$white800;
+  overflow: hidden;
+
+
+  .content {
+    width: 100%;
+    @include theme.flex(column, flex-start, flex-start);
+
+    .header {
+      width: 100%;
+      padding: 25px 15px;
+      border-bottom: 1px solid theme.$white800;
+      @include theme.flex(row, center, flex-start);
+
+      .logo {
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .info {
+        .title_1 {
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 100%;
+        }
+
+        .title_2 {
+          font-size: 12px;
+          font-weight: normal;
+          line-height: 100%;
+        }
+      }
+    }
+
+    .menus {
+      width: 100%;
+      padding: 15px 0px;
+      @include theme.flex(column, flex-start, flex-start);
+
+      .menu {
+        padding: 10px 30px;
+        width: 100%;
+        @include theme.flex(row, center, flex-start);
+        gap: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        .icon {
+          width: 22px;
+          height: 22px;
+          @include theme.flex(row, center, center);
+          color: theme.$white800;
+        }
+
+        .name {
+          font-size: 16px;
+          line-height: 100%;
+          color: theme.$white800;
+        }
+
+        &.active {
+          background: theme.$purple200;
+
+          .icon {
+            color: theme.$black100;
+          }
+
+          .name {
+            color: theme.$black100;
+            font-weight: bold;
+          }
+        }
+
+        &:hover {
+          background-color: theme.$white300;
+        }
+      }
+
+    }
+  }
+
+  .mode {
+    margin: 15px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: theme.$white300;
+    @include theme.flex(row, flex-start, flex-start);
+    // gap: 5px;
+
+    .mode_menu {
+      padding: 5px 10px;
+      border-radius: 5px;
+      @include theme.flex(row, center, flex-start);
+      gap: 5px;
+
+      .icon {
+        width: 18px;
+        height: 18px;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .light,
+    .dark {
+      background: theme.$white100;
+    }
+
+  }
+}
+
+.sidebar_container.dark {
+  background: theme.$black300;
+
+  .content {
+
+    .header {
+      .info {
+        color: theme.$white100;
+      }
+    }
+
+    .menus {
+      .menu {
+        &.active {
+          background: theme.$purple600;
+
+          .icon {
+            color: theme.$white100;
+          }
+
+          .name {
+            color: theme.$white100;
+            font-weight: bold;
+          }
+        }
+
+        &:hover {
+          background-color: theme.$purple600;
+        }
+      }
+    }
+  }
+
+  .mode {
+    color: theme.$white100;
+    background: theme.$black400;
+
+    .light,
+    .dark {
+      background: theme.$black300;
+    }
+  }
+}

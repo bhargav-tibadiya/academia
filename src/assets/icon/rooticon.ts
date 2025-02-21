@@ -1,6 +1,43 @@
-import { ChevronRight, CircleAlert } from 'lucide-react'
+import {
+  ChevronRight,
+  CircleAlert,
+  LayoutDashboard,
+  CalendarCheck,
+  School,
+  Users,
+  UserRound,
+  ReceiptIndianRupee,
+  Ticket,
+  Bell,
+  Goal,
+  FileUser,
+  FileTerminal,
+  PencilLine,
+  GraduationCap,
+  CalendarRange,
+  Inbox,
+  Sun,
+  Moon
+} from 'lucide-react'
 
 export {
   ChevronRight,
-  CircleAlert
+  CircleAlert,
+  LayoutDashboard,
+  CalendarCheck,
+  School,
+  Users,
+  UserRound,
+  ReceiptIndianRupee,
+  Ticket,
+  Bell,
+  Goal,
+  FileUser,
+  FileTerminal,
+  PencilLine,
+  GraduationCap,
+  CalendarRange,
+  Inbox,
+  Sun,
+  Moon
 }
