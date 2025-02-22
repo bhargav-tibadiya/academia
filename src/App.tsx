@@ -11,6 +11,7 @@ import { ROUTES } from './utils/constants/routes'
 import Login from './pages/auth/login/login'
 import Signup from './pages/auth/signup/signup'
 import AdminDashboardPage from './pages/app/admin/dashboard/layout'
+import AdminClassPage from './pages/app/admin/class/layout'
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 
           <Route path={ROUTES.ADMIN_DASHBOARD} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_ATTENDANCE} Component={AdminDashboardPage} />
-          <Route path={ROUTES.ADMIN_CLASS} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_CLASS} Component={AdminClassPage} />
           <Route path={ROUTES.ADMIN_FEES} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_INSTITUTE} Component={AdminDashboardPage} />

@@ -96,9 +96,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
 
-  //# Logs
-  console.log('theme', theme)
-
   return (
     <div className={`${styles.sidebar_container} ${styles[theme]}`}>
       <div className={styles.content}>
@@ -116,9 +113,10 @@ const Sidebar = () => {
           </div>
         </div>
         <div className={styles.menus}>
-          {menus.map((menu) => {
+          {menus.map((menu, index) => {
             return (
               <div
+                key={index}
                 className={`${styles.menu} ${location.pathname === menu.path ? styles.active : ""}`}
                 onClick={() => navigate(menu.path)}
               >

@@ -1,0 +1,28 @@
+@use '../../../../../styles/theme';
+
+.class_container {
+  @include theme.flex(column, flex-start, flex-start);
+  height: auto;
+  width: 100%;
+  padding: 20px 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: theme.$white100;
+  border: 1px solid theme.$white800;
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 10px 0;
+    border-bottom: 1px solid theme.$white500;
+  }
+}
+
+.class_container.dark {
+  background: theme.$black300;
+}
