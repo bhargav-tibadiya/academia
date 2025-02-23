@@ -1,10 +1,9 @@
 // Configs & Utils
 import useTheme from "../../../../../utils/hooks/useTheme";
-import { ROUTES } from "../../../../../utils/constants/routes";
 
 // Styles & Assets
-import styles from "./Dashboard.module.scss";
-import { LayoutDashboard, CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox } from '../../../../../assets/icon/rooticon'
+import styles from "./dashboard.module.scss";
+import { CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox } from '../../../../../assets/icon/rooticon'
 
 // Type & Constants
 const stats = [
@@ -21,7 +20,6 @@ const stats = [
     descriptions: "Total Classes",
   }
 ];
-
 
 const models = [
   {

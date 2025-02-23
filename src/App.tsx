@@ -15,6 +15,7 @@ import Login from './pages/auth/login/login'
 import Signup from './pages/auth/signup/signup'
 import AdminDashboardPage from './pages/app/admin/dashboard/layout'
 import AdminClassPage from './pages/app/admin/class/layout'
+import AdminUserPage from './pages/app/admin/user/layout'
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
           <Route path={ROUTES.ADMIN_STUDENT} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_UPDATE} Component={AdminDashboardPage} />
-          <Route path={ROUTES.ADMIN_USER} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_USER} Component={AdminUserPage} />
 
         </Routes>
       </div>
