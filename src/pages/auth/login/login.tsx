@@ -68,7 +68,6 @@ const Login = () => {
               </div>
               <div className={styles.part2}>
                 <div className={styles.input_email}>
-                {/* Controller use karvu joise and managemenrt mate We are using React hook form and ZOd (As formik and Yup) */}
                   <Controller
                     name="email"
                     control={control}

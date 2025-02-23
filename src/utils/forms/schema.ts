@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-// This is the shcema how you made in yup 
 export const loginSchema = z.object({
   email:
     z.string()
@@ -14,7 +13,6 @@ export const loginSchema = z.object({
       .regex(/[0-9]/, "Password must contain at least one number")
       .regex(/[@$!%*?&]/, "Password must contain at least one special character (@$!%*?&)"),
 });
-// Ek vastu extra aavse e che this below line typescript hee etle type jose
 export type LoginFormType = z.infer<typeof loginSchema>;
 
 export const signupSchema = z.object({
