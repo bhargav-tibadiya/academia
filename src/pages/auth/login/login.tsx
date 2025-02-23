@@ -22,7 +22,7 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  // 
+  // THis is form
   const loginForm = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     mode: "onSubmit",
@@ -68,6 +68,7 @@ const Login = () => {
               </div>
               <div className={styles.part2}>
                 <div className={styles.input_email}>
+                {/* Controller use karvu joise and managemenrt mate We are using React hook form and ZOd (As formik and Yup) */}
                   <Controller
                     name="email"
                     control={control}
