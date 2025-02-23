@@ -1,102 +1,163 @@
-.dashboard {
+@use '../../../../../styles/theme';
+
+.dashboard_container {
+  @include theme.flex(column, flex-start, flex-start);
+  height: auto;
   width: 100%;
-  min-height: 100vh;
-  padding: 20px;
-  //   background: #1f2937;
-
+  max-height: 100%;
+  padding: 20px 30px;
   border-radius: 10px;
-}
+  overflow: auto;
+  background: theme.$white100;
+  border: 1px solid theme.$white800;
 
-h1 {
-  margin-bottom: 20px;
-}
-
-// Analytics Overview Section
-.analyticsOverview {
-  background: #1f2937;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  color: white;
-
-  h3 {
-    margin-bottom: 15px;
+  &::-webkit-scrollbar {
+    width: 10px;
   }
 
-  .analyticsContainer {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    color: white;
+  &::-webkit-scrollbar-track {
+    padding: 5px;
+  }
 
-    div {
-      text-align: center;
-      padding: 15px;
-      flex: 1;
-      min-width: 120px;
+  &::-webkit-scrollbar-thumb {
+    background-color: theme.$white800;
+    border-radius: 10px;
+    border: 4px solid theme.$white200;
+  }
 
-      span {
-        font-size: 24px;
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: theme.$red500;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 10px 0;
+    border-bottom: 1px solid theme.$white500;
+  }
+
+  .analytics_overview {
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid theme.$white500;
+    margin: 10px 0px 25px 0px;
+    @include theme.flex(column, flex-start, flex-start);
+
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      margin: 10px 0;
+      border-bottom: 1px solid theme.$white500;
+    }
+
+    .analytics_container {
+      gap: 15px;
+      width: 100%;
+      // margin: 10px 0px;
+      @include theme.flex(row, stretch, flex-start);
+
+      .analytics_card {
+        width: 100%;
+        padding: 15px 10px;
+        border-radius: 10px;
+        background: theme.$purple100;
+        border: 1px solid theme.$purple200;
+        @include theme.flex(column, center, center);
+
+        .numbers {
+          color: theme.$purple700;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .description {
+          color: theme.$black700;
+        }
+      }
+    }
+  }
+
+  .models_container {
+    width: 100%;
+    display: grid;
+    margin: 10px 0;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+
+    .model {
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid theme.$white800;
+      @include theme.flex(column, flex-start, flex-start);
+      gap: 5px;
+
+      .head {
+        width: 100%;
         font-weight: bold;
-        display: block;
+        @include theme.flex(row, flex-start, space-between);
+
+        div {
+          @include theme.flex(row, center, center);
+          height: 24px;
+
+          svg {
+            height: 24px;
+            width: 24px;
+          }
+        }
       }
 
-      p {
-        font-size: 14px;
-        opacity: 0.7;
+      .body {
+        font-size: 32px;
+        font-weight: bold
+      }
+
+      .foot {
+        color: theme.$white800;
+        font-size: 16px;
+      }
+
+      &:hover{
+        cursor: pointer;
+        border: 1px solid theme.$purple400;
       }
     }
   }
 }
 
-// Stats Section (Grid Layout - 3x3)
-.statsSection {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  color: white;
-}
+.dashboard_container.dark {
+  background: theme.$black300;
+  color: theme.$white100;
 
-// Individual Stat Card
-.statCard {
-  background: #1f2937;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-  .icon {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #10b981;
+  &::-webkit-scrollbar-thumb {
+    background-color: theme.$white800;
+    border: 4px solid theme.$black300;
   }
 
-  h4 {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
+  .analytics_overview {
+    .analytics_container {
+      .analytics_card {
+        background: theme.$purple700;
 
-  .value {
-    font-size: 22px;
-    font-weight: bold;
-  }
+        .numbers {
+          color: theme.$purple200;
+        }
 
-  .growth {
-    font-size: 14px;
-    color: #10b981;
-  }
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
-    background: #374151;
-
-    .icon {
-      color: #22c55e; 
+        .description {
+          color: theme.$white800;
+        }
+      }
     }
   }
 }

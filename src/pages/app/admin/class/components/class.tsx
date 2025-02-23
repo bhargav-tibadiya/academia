@@ -250,7 +250,6 @@ const Class = () => {
           </tbody>
         </table>
       </div>
-
     </div >
   )
 }
