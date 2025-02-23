@@ -1,40 +1,49 @@
+@import "/src/styles/theme";
+
 .dashboard {
   width: 100%;
   min-height: 100vh;
   padding: 20px;
-  //   background: #1f2937;
-
   border-radius: 10px;
+  background: $white100;
 }
 
 h1 {
   margin-bottom: 20px;
+  color: $black500;
 }
 
 // Analytics Overview Section
 .analyticsOverview {
-  background: #1f2937;
+  // background: $purple100;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  color: white;
+  box-shadow: 0 4px 8px rgba($black500, 0.1);
+  color: $purple700;
+  border: 1px solid rgba($black500, 0.2);
 
   h3 {
     margin-bottom: 15px;
+    border-bottom: 1px solid rgba($black500, 0.2);
+    padding: 10px;
   }
 
   .analyticsContainer {
-    display: flex;
-    justify-content: space-around;
+    @include flex(row, center, space-around);
     flex-wrap: wrap;
-    color: white;
+    color: $black500;
 
     div {
       text-align: center;
       padding: 15px;
       flex: 1;
       min-width: 120px;
+      border: 1px solid rgba($black500, 0.2);
+      margin: 10px;
+      border-radius: 10px;
+      background: $purple100;
+      color: $purple700;
 
       span {
         font-size: 24px;
@@ -51,52 +60,73 @@ h1 {
 }
 
 // Stats Section (Grid Layout - 3x3)
+h3 {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba($black500, 0.2);
+  padding: 10px;
+  color: $purple700;
+}
 .statsSection {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  color: white;
+  color: $purple700;
+
+  
 }
 
 // Individual Stat Card
 .statCard {
-  background: #1f2937;
+  background: $white100;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  text-align: left; // Align text to the left for better structuring
+  border: 1px solid rgba($black500, 0.2);
+  box-shadow: 0 4px 8px rgba($black500, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  justify-content: space-between;
+  position: relative; // Needed for absolute positioning of the icon
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 
+  // Positioning the icon to the top-right corner
   .icon {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #10b981;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: $black500;
   }
 
   h4 {
-    margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $purple700;
+    // margin-bottom: 5px;
   }
 
   .value {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
+    color: $purple700;
   }
 
   .growth {
     font-size: 14px;
-    color: #10b981;
+    color: $green700;
+    opacity: 0.8;
   }
+
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
-    background: #374151;
+    box-shadow: 0 6px 12px rgba($black500, 0.2);
+    background: $purple100;
+    color: $purple700;
 
     .icon {
-      color: #22c55e; 
+      color: $black600;
     }
   }
 }
