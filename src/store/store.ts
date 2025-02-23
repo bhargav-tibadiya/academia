@@ -11,10 +11,11 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import rootReducer from "./root.reducer";
 
 // Types & Const
-import { AuthState } from "../types/store/slices/types";
+import { AuthState, GeneralState } from "../types/store/slices/types";
 
 export interface RootStoreState {
   auth: AuthState;
+  general: GeneralState
 }
 
 
