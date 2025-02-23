@@ -17,7 +17,12 @@ import {
   CalendarRange,
   Inbox,
   Sun,
-  Moon
+  Moon,
+  Eye,
+  Edit,
+  ArrowLeft,
+  ArrowRight,
+  Plus
 } from 'lucide-react'
 
 export {
@@ -39,5 +44,10 @@ export {
   CalendarRange,
   Inbox,
   Sun,
-  Moon
+  Moon,
+  Eye,
+  Edit,
+  ArrowLeft,
+  ArrowRight,
+  Plus
 }
