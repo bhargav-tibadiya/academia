@@ -65,7 +65,8 @@ const Class = () => {
         total: 0, none: 0, applied: 0, accepted: 0, rejected: 0
       }
     );
-  }, [dummyUserData])
+    // TODO :   Add data source as dependency
+  }, [])
 
   // States
   const [filter, setFilter] = useState(initialFilters)
