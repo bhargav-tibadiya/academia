@@ -13,12 +13,12 @@ import { Toaster } from 'react-hot-toast'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <PersistGate persistor={persistStore(store)}>
-        <BrowserRouter>
-          <Toaster containerClassName='hotToast' toastOptions={{ duration: 5000 }} />
+      <BrowserRouter>
+        <Toaster containerClassName='hotToast' toastOptions={{ duration: 5000 }} />
+        <PersistGate persistor={persistStore(store)}>
           <App />
-        </BrowserRouter>
-      </PersistGate>
+        </PersistGate>
+      </BrowserRouter>
     </Provider>
   </StrictMode>,
 )

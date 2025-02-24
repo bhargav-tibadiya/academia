@@ -18,6 +18,7 @@ import AdminClassPage from './pages/app/admin/class/layout'
 import AdminUserPage from './pages/app/admin/user/layout'
 import AdminStudentPage from './pages/app/admin/student/layout'
 import AdminProfilePage from './pages/app/admin/profile/layout'
+import AdminPlacementPage from './pages/app/admin/placement/layout'
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
           <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_INSTITUTE} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_NOTIFICATION} Component={AdminDashboardPage} />
-          <Route path={ROUTES.ADMIN_PLACEMENT} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_PLACEMENT} Component={AdminPlacementPage} />
           <Route path={ROUTES.ADMIN_PROFILE} Component={AdminProfilePage} />
           <Route path={ROUTES.ADMIN_REQUEST} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_RESULT} Component={AdminDashboardPage} />
