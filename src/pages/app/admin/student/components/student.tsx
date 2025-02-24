@@ -109,7 +109,7 @@ const Student = () => {
   //# Logs  
 
   return (
-    <div className={`${styles.user_container} ${styles[theme]}`}>
+    <div className={`${styles.student_container} ${styles[theme]}`}>
       <div className={styles.title}>User Model</div>
       <div className={styles.divider}></div>
       <div className={styles.actions}>
