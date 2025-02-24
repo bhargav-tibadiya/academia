@@ -108,7 +108,7 @@ const Placement = () => {
   //# Logs    
 
   return (
-    <div className={`${styles.profile_container} ${styles[theme]}`}>
+    <div className={`${styles.placement_container} ${styles[theme]}`}>
       <div className={styles.title}>Placement Model</div>
       <div className={styles.divider}></div>
       <div className={styles.actions}>

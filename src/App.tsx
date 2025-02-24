@@ -19,6 +19,7 @@ import AdminUserPage from './pages/app/admin/user/layout'
 import AdminStudentPage from './pages/app/admin/student/layout'
 import AdminProfilePage from './pages/app/admin/profile/layout'
 import AdminPlacementPage from './pages/app/admin/placement/layout'
+import AdminAttendancePage from './pages/app/admin/attendance/layout'
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route path={ROUTES.SIGNUP} Component={Signup} />
 
           <Route path={ROUTES.ADMIN_DASHBOARD} Component={AdminDashboardPage} />
-          <Route path={ROUTES.ADMIN_ATTENDANCE} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_ATTENDANCE} Component={AdminAttendancePage} />
           <Route path={ROUTES.ADMIN_CLASS} Component={AdminClassPage} />
           <Route path={ROUTES.ADMIN_FEES} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminDashboardPage} />

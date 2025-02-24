@@ -1,7 +1,7 @@
 @use '../../../../../styles/theme';
 
 
-.placement_container {
+.attendance_container {
   @include theme.flex(column, flex-start, flex-start);
   height: auto;
   width: 100%;
@@ -145,7 +145,7 @@
   }
 }
 
-.placement_container.dark {
+.attendance_container.dark {
   color: theme.$white100;
   background: theme.$black300;
 
