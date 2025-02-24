@@ -11,8 +11,12 @@ import { ROUTES } from './utils/constants/routes'
 import useTheme from './utils/hooks/useTheme'
 
 // Components
+
+// --> AUTH
 import Login from './pages/auth/login/login'
 import Signup from './pages/auth/signup/signup'
+
+// --> ADMIN
 import AdminDashboardPage from './pages/app/admin/dashboard/layout'
 import AdminClassPage from './pages/app/admin/class/layout'
 import AdminUserPage from './pages/app/admin/user/layout'
@@ -20,6 +24,7 @@ import AdminStudentPage from './pages/app/admin/student/layout'
 import AdminProfilePage from './pages/app/admin/profile/layout'
 import AdminPlacementPage from './pages/app/admin/placement/layout'
 import AdminAttendancePage from './pages/app/admin/attendance/layout'
+import AdminHallTicketPage from './pages/app/admin/hallticket/layout'
 
 
 function App() {
@@ -37,7 +42,7 @@ function App() {
           <Route path={ROUTES.ADMIN_ATTENDANCE} Component={AdminAttendancePage} />
           <Route path={ROUTES.ADMIN_CLASS} Component={AdminClassPage} />
           <Route path={ROUTES.ADMIN_FEES} Component={AdminDashboardPage} />
-          <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminHallTicketPage} />
           <Route path={ROUTES.ADMIN_INSTITUTE} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_NOTIFICATION} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_PLACEMENT} Component={AdminPlacementPage} />
