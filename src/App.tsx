@@ -29,6 +29,7 @@ import AdminInstitutePage from './pages/app/admin/institute/layout'
 import AdminNotificationPage from './pages/app/admin/notification/layout'
 import AdminRequestPage from './pages/app/admin/request/layout'
 import AdminResultPage from './pages/app/admin/result/layout'
+import AdminTimetablePage from './pages/app/admin/timetable/layout'
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
           <Route path={ROUTES.ADMIN_REQUEST} Component={AdminRequestPage} />
           <Route path={ROUTES.ADMIN_RESULT} Component={AdminResultPage} />
           <Route path={ROUTES.ADMIN_STUDENT} Component={AdminStudentPage} />
-          <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminTimetablePage} />
           <Route path={ROUTES.ADMIN_UPDATE} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_USER} Component={AdminUserPage} />
 
