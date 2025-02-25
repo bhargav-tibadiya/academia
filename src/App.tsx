@@ -30,6 +30,7 @@ import AdminNotificationPage from './pages/app/admin/notification/layout'
 import AdminRequestPage from './pages/app/admin/request/layout'
 import AdminResultPage from './pages/app/admin/result/layout'
 import AdminTimetablePage from './pages/app/admin/timetable/layout'
+import AdminUpdatePage from './pages/app/admin/update/layout'
 
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
           <Route path={ROUTES.ADMIN_RESULT} Component={AdminResultPage} />
           <Route path={ROUTES.ADMIN_STUDENT} Component={AdminStudentPage} />
           <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminTimetablePage} />
-          <Route path={ROUTES.ADMIN_UPDATE} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_UPDATE} Component={AdminUpdatePage} />
           <Route path={ROUTES.ADMIN_USER} Component={AdminUserPage} />
 
         </Routes>
