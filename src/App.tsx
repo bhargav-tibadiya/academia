@@ -26,6 +26,7 @@ import AdminPlacementPage from './pages/app/admin/placement/layout'
 import AdminAttendancePage from './pages/app/admin/attendance/layout'
 import AdminHallTicketPage from './pages/app/admin/hallticket/layout'
 import AdminInstitutePage from './pages/app/admin/institute/layout'
+import AdminNotificationPage from './pages/app/admin/notification/layout'
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
           <Route path={ROUTES.ADMIN_FEES} Component={AdminDashboardPage} />
           <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminHallTicketPage} />
           <Route path={ROUTES.ADMIN_INSTITUTE} Component={AdminInstitutePage} />
-          <Route path={ROUTES.ADMIN_NOTIFICATION} Component={AdminDashboardPage} />
+          <Route path={ROUTES.ADMIN_NOTIFICATION} Component={AdminNotificationPage} />
           <Route path={ROUTES.ADMIN_PLACEMENT} Component={AdminPlacementPage} />
           <Route path={ROUTES.ADMIN_PROFILE} Component={AdminProfilePage} />
           <Route path={ROUTES.ADMIN_REQUEST} Component={AdminDashboardPage} />
