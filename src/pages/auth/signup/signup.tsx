@@ -12,6 +12,7 @@ import styles from './signup.module.scss'
 import { ChevronRight, CircleAlert } from '../../../assets/icon/rooticon'
 
 // Utils & Constant
+import useTheme from "../../../utils/hooks/useTheme";
 import { ROUTES } from "../../../utils/constants/routes";
 import { SignupFormType, signupSchema } from "../../../utils/forms/schema";
 import { sendOTPThunk, signupThunk } from "../../../store/thunks/auth.thunk";
@@ -20,6 +21,7 @@ import { loginBackground as signupBackground } from "../../../assets/image/rooti
 const Signup = () => {
 
   // Hooks
+  const { theme } = useTheme();
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -80,7 +82,7 @@ const Signup = () => {
   }, [watch('role')])
 
   return (
-    <div className={styles.signup_container}>
+    <div className={`${styles.signup_container} ${styles[theme]}`}>
       <div className={styles.content}>
         <div className={styles.left}>
           <img src={signupBackground} alt="Signup Background" />
@@ -152,7 +154,6 @@ const Signup = () => {
               </div>
               <div className={styles.part3}>
                 <div className={styles.heading}>Forgot Password?</div>
-
                 <div onClick={() => { sendEmail(getValues('email')) }} className={styles.send_otp}>Send Otp</div>
               </div>
               <div className={styles.part4}>

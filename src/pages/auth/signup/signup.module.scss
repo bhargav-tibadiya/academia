@@ -4,7 +4,6 @@
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: theme.$white100;
   padding: 6px;
 
   .content {
@@ -236,6 +235,40 @@
 
         &:hover {
           background: theme.$purple500;
+        }
+      }
+    }
+  }
+}
+
+.signup_container.dark {
+  .content {
+    color: theme.$white100;
+
+    .right {
+      .form {
+        form {
+          .part5 {
+            color: theme.$black100;
+            background: theme.$purple400;
+
+            .selected {
+              color: theme.$black100;
+              background: theme.$white100;
+            }
+          }
+
+          .part2 {
+
+            .input_email,
+            .input_password,
+            .input_otp {
+              input {
+                color: theme.$white100;
+                background: theme.$black100;
+              }
+            }
+          }
         }
       }
     }

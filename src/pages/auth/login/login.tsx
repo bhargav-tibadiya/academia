@@ -12,6 +12,7 @@ import { loginBackground } from '../../../assets/image/rootimage'
 import { ChevronRight, CircleAlert } from '../../../assets/icon/rooticon'
 
 // Utils & Constant
+import useTheme from "../../../utils/hooks/useTheme";
 import { ROUTES } from "../../../utils/constants/routes";
 import { loginThunk } from "../../../store/thunks/auth.thunk";
 import { LoginFormType, loginSchema } from '../../../utils/forms/schema';
@@ -19,6 +20,7 @@ import { LoginFormType, loginSchema } from '../../../utils/forms/schema';
 const Login = () => {
 
   // Hooks
+  const { theme } = useTheme();
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -42,7 +44,10 @@ const Login = () => {
         email: data.email,
         password: data.password
       }
-      await dispatch(loginThunk(payload)).unwrap()
+      const res = await dispatch(loginThunk(payload)).unwrap()
+      toast.success("Login Successful")
+      console.log('res', res)
+
     } catch (error: any) {
       const errorMessage = error?.message || error?.data?.message || 'An unexpected error occurred';
       toast.error(errorMessage)
@@ -50,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.login_container}>
+    <div className={`${styles.login_container} ${styles[theme]}`}>
       <div className={styles.content}>
         <div className={styles.left}>
           <img src={loginBackground} alt="Login Background" />
