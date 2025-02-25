@@ -4,7 +4,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import { useDispatch, useSelector } from 'react-redux'
 
 // Configs
-import storage from "redux-persist/lib/storage";
+import sessionStorage from "redux-persist/lib/storage/session";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 
 // Reducer
@@ -21,7 +21,10 @@ export interface RootStoreState {
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: sessionStorage,
+  throttle: 1000,
+  timeout: 100,
+  whitelist: ["auth"],
   transforms: [
     encryptTransform({
       secretKey: "your-secret-key",

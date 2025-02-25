@@ -1,5 +1,5 @@
 // Styles
-import styles from './class.module.scss'
+import styles from './institute.module.scss'
 import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '../../../../../assets/icon/rooticon'
 
 // Utils & Config
@@ -8,11 +8,9 @@ import { useEffect, useMemo, useState } from 'react';
 
 // Constants & Types
 
-interface ClassData {
+interface InstituteData {
   name: string,
-  students: string,
-  exams: string,
-  update: string
+  department: string,
 }
 const initialFilters = {
   filterKey: undefined,
@@ -20,129 +18,65 @@ const initialFilters = {
   page: 1,
   recordPerPage: 10
 }
-const dummyClassData: ClassData[] = [
-  {
-    name: "IT_DIV_A",
-    students: "80",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "IT_DIV_B",
-    students: "70",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "IT_DIV_C",
-    students: "56",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "CE_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "CE_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "CE_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "ME_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "ME_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "ME_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "CS_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "CS_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "CS_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "MI_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "MI_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "MI_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
+const dummyInstituteData: InstituteData[] = [
+  { name: "Stanford University", department: "18" },
+  { name: "Oxford Academic Center", department: "12" },
+  { name: "Harvard School of Sciences", department: "21" },
+  { name: "Massachusetts Technical College", department: "26" },
+  { name: "Cambridge Research Foundation", department: "15" },
+  { name: "Berkeley Innovation Hub", department: "19" },
+  { name: "Yale Educational Consortium", department: "14" },
+  { name: "Princeton Advanced Studies", department: "9" },
+  { name: "Columbia Global Academy", department: "17" },
+  { name: "California Technology Center", department: "8" },
+  { name: "Johns Hopkins Medical Foundation", department: "24" },
+  { name: "Imperial College London", department: "16" },
+  { name: "University of Chicago", department: "13" },
+  { name: "UCLA Research Center", department: "22" },
+  { name: "Cornell University", department: "17" },
+  { name: "Toronto Polytechnic", department: "19" },
+  { name: "Tokyo Science University", department: "28" },
+  { name: "Singapore National Academy", department: "11" },
+  { name: "ETH Zurich", department: "23" },
+  { name: "Peking University", department: "20" },
+  { name: "Melbourne Research Institute", department: "14" },
+  { name: "Seoul National University", department: "25" },
+  { name: "Delhi Technical University", department: "12" },
+  { name: "Max Planck Institute", department: "18" },
+  { name: "Munich Technical University", department: "15" }
 ]
 
 
-const Class = () => {
+const Institute = () => {
 
   // Hooks
   const { theme } = useTheme();
 
   const stats = useMemo(() => {
-    return dummyClassData.reduce(
+    return dummyInstituteData.reduce(
       (acc, curr) => {
-        acc.totalClass += 1;
-        acc.totalStudents += parseInt(curr.students, 10);
-        acc.totalExams += parseInt(curr.exams, 10);
-        acc.totalUpdates += parseInt(curr.update, 10);
+        acc.total += 1;
+        acc.department += parseInt(curr.department, 10)
         return acc;
       },
-      { totalClass: 0, totalStudents: 0, totalExams: 0, totalUpdates: 0 }
+      {
+        total: 0, department: 0
+      }
     );
-  }, [dummyClassData])
+    // TODO : Add data source as dependency
+  }, [])
 
   // States
   const [filter, setFilter] = useState(initialFilters)
-  const [initialData, setInitialData] = useState<ClassData[]>([])
-  const [filteredData, setFilteredData] = useState(dummyClassData)
+  const [initialData, setInitialData] = useState<InstituteData[]>([])
+  const [filteredData, setFilteredData] = useState(dummyInstituteData)
 
 
   // Functions
   useEffect(() => {
-    const filterData = (classData: ClassData[], filterKey: keyof ClassData | undefined, filterValue: string | undefined, page: number) => {
+    const filterData = (InstituteData: InstituteData[], filterKey: keyof InstituteData | undefined, filterValue: string | undefined, page: number) => {
 
-      let tmpData = [...classData];
+      let tmpData = [...InstituteData];
 
       if (filterKey && filterValue) {
         setFilteredData(tmpData);
@@ -161,16 +95,16 @@ const Class = () => {
 
   useEffect(() => {
     if (!initialData || initialData.length === 0) {
-      setInitialData(dummyClassData)
+      setInitialData(dummyInstituteData)
     }
   }, [initialData])
 
 
-  //# Logs  
+  //# Logs    
 
   return (
-    <div className={`${styles.class_container} ${styles[theme]}`}>
-      <div className={styles.title}>Class Model</div>
+    <div className={`${styles.institute_container} ${styles[theme]}`}>
+      <div className={styles.title}>Institute Model</div>
       <div className={styles.divider}></div>
       <div className={styles.actions}>
         <div className={styles.items}>
@@ -200,21 +134,17 @@ const Class = () => {
             <tr>
               <td>No</td>
               <td>Name</td>
-              <td>Students</td>
-              <td>Exams</td>
-              <td>Updates</td>
+              <td>Department</td>
               <td>Actions</td>
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((classItem, index) => {
+            {filteredData.map((student, index) => {
               return (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{classItem.name}</td>
-                  <td>{classItem.students}</td>
-                  <td>{classItem.exams}</td>
-                  <td>{classItem.update}</td>
+                  <td>{student.name}</td>
+                  <td>{student.department}</td>
                   <td>
                     <div className={styles.action_icons}>
                       <span title='View' className={styles.action_icon}><Eye /></span>
@@ -234,18 +164,14 @@ const Class = () => {
         <table>
           <thead>
             <tr>
-              <td>Total Classes</td>
-              <td>Total Students</td>
-              <td>Total Exams</td>
-              <td>Total Updates</td>
+              <td>Total Institutes</td>
+              <td>Total Departments</td>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{stats.totalClass}</td>
-              <td>{stats.totalStudents}</td>
-              <td>{stats.totalExams}</td>
-              <td>{stats.totalUpdates}</td>
+              <td>{stats.total}</td>
+              <td>{stats.department}</td>
             </tr>
           </tbody>
         </table>
@@ -254,4 +180,4 @@ const Class = () => {
   )
 }
 
-export default Class
+export default Institute

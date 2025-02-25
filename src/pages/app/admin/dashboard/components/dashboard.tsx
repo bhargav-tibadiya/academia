@@ -1,148 +1,151 @@
-import React from "react";
-import styles from "./Dashboard.module.scss";
-import {
-  CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox, Book, ClipboardList
-} from "lucide-react";
-interface Stat {
-  title: string;
-  value: number;
-  growth?: string;
-  icon?: JSX.Element;
-}
+// Configs & Utils
+import useTheme from "../../../../../utils/hooks/useTheme";
 
-const stats: Stat[] = [
+// Styles & Assets
+import styles from "./dashboard.module.scss";
+import { CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox } from '../../../../../assets/icon/rooticon'
+
+// Type & Constants
+const stats = [
   {
-    title: "Students",
-    value: 1250,
-    growth: "+5.2% growth",
-    icon: <Users className={styles.icon} />,
+    number: 4582,
+    descriptions: "Total Students",
   },
   {
-    title: "Institute",
-    value: 75,
-    growth: "+2.1% growth",
-    icon: <School className={styles.icon} />,
+    number: 12,
+    descriptions: "Total Institute",
   },
   {
-    title: "Classes",
-    value: 50,
-    growth: "+1.8% growth",
-    icon: <GraduationCap className={styles.icon} />,
-  },
-  {
-    title: "Subjects",
-    value: 30,
-    growth: "+3.5% growth",
-    icon: <Book className={styles.icon} />, 
-  },
-  {
-    title: "Exams",
-    value: 120,
-    growth: "+4.7% growth",
-    icon: <ClipboardList className={styles.icon} />, 
-  },
-  {
-    title: "Events",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <CalendarCheck className={styles.icon} />,
-  },
-  {
-    title: "Fees",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <ReceiptIndianRupee className={styles.icon} />,
-  },{
-    title: "Hall Ticket",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <Ticket className={styles.icon} />,
-  },
-  {
-    title: "Notifications",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <Bell className={styles.icon} />,
-  },
-  {
-    title: "Placements",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <Goal className={styles.icon} />,
-  },
-  {
-    title: "Profile",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <FileUser className={styles.icon} />,
-  },
-  {
-    title: "Request",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <FileTerminal className={styles.icon} />,
-  },
-  {
-    title: "Result",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <PencilLine className={styles.icon} />,
-  },
-  {
-    title: "Time Table",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <CalendarRange className={styles.icon} />,
-  },
-  {
-    title: "Updates",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <Inbox className={styles.icon} />,
-  },{
-    title: "User",
-    value: 25,
-    growth: "+6.3% growth",
-    icon: <UserRound className={styles.icon} />,
-  },
+    number: 46,
+    descriptions: "Total Classes",
+  }
 ];
 
-const Dashboard: React.FC = () => {
+const models = [
+  {
+    icon: <CalendarCheck />,
+    label: "Attendance",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <Users />,
+    label: "Class",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <ReceiptIndianRupee />,
+    label: "Fees",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <Ticket />,
+    label: "Hall Ticket",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <School />,
+    label: "Institute",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <Bell />,
+    label: "Notification",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <Goal />,
+    label: "Placement",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <FileUser />,
+    label: "Profile",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <FileTerminal />,
+    label: "Request",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <PencilLine />,
+    label: "Result",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <GraduationCap />,
+    label: "Student",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <CalendarRange />,
+    label: "Time Table",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <Inbox />,
+    label: "Update",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <UserRound />,
+    label: "User",
+    progress: "2.1% growth",
+    count: 150
+  }
+];
+
+const Dashboard = () => {
+
+  // Hooks
+  const { theme } = useTheme();
   return (
-    <div className={styles.dashboard}>
-      <h1>Dashboard</h1>
-
-      {/* Analytics Overview */}
-      <section className={styles.analyticsOverview}>
-        <h3>Analytics Overview</h3>
-        <div className={styles.analyticsContainer}>
-          <div>
-            <span>4582</span>
-            <p>Total Students</p>
-          </div>
-          <div>
-            <span>12</span>
-            <p>Total Institute</p>
-          </div>
-          <div>
-            <span>46</span>
-            <p>Total Classes</p>
-          </div>
+    <div className={`${styles.dashboard_container} ${styles[theme]}`}>
+      <div className={styles.title}>Dashboard</div>
+      <div className={styles.divider}></div>
+      <div className={styles.analytics_overview}>
+        <div className={styles.title}>Analytics Overview</div>
+        <div className={styles.divider}></div>
+        <div className={styles.analytics_container}>
+          {stats.map((stat, index) => {
+            return (
+              <div key={index} className={styles.analytics_card}>
+                <div className={styles.numbers}>{stat.number}</div>
+                <div className={styles.description}>{stat.descriptions}</div>
+              </div>
+            )
+          })}
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <h3>Models</h3>
-      <section className={styles.statsSection}>
-        {stats.map((stat, index) => (
-          <div key={index} className={styles.statCard}>
-            {stat.icon}
-            <h4>{stat.title}</h4>
-            <p className={styles.value}>{stat.value}</p>
-            {stat.growth && <p className={styles.growth}>{stat.growth}</p>}
-          </div>
-        ))}
-      </section>
+      </div>
+      <div className={styles.title}>Models</div>
+      <div className={styles.divider}></div>
+      <div className={styles.models_container}>
+        {models.map((model, index) => {
+          return (
+            <div key={index} className={styles.model}>
+              <div className={styles.head}>
+                <div>{model.label}</div>
+                <div>{model.icon}</div>
+              </div>
+              <div className={styles.body}>{model.count} </div>
+              <div className={styles.foot}>{model.progress}</div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   );
 };

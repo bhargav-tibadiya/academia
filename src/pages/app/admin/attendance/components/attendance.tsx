@@ -1,5 +1,5 @@
 // Styles
-import styles from './class.module.scss'
+import styles from './attendance.module.scss'
 import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '../../../../../assets/icon/rooticon'
 
 // Utils & Config
@@ -8,11 +8,9 @@ import { useEffect, useMemo, useState } from 'react';
 
 // Constants & Types
 
-interface ClassData {
-  name: string,
-  students: string,
-  exams: string,
-  update: string
+interface AttendanceData {
+  userId: string,
+  attendance: string,
 }
 const initialFilters = {
   filterKey: undefined,
@@ -20,129 +18,65 @@ const initialFilters = {
   page: 1,
   recordPerPage: 10
 }
-const dummyClassData: ClassData[] = [
-  {
-    name: "IT_DIV_A",
-    students: "80",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "IT_DIV_B",
-    students: "70",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "IT_DIV_C",
-    students: "56",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "CE_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "CE_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "CE_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "ME_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "ME_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "ME_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "CS_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "CS_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "CS_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "MI_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "MI_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "MI_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
+const dummyAttendanceData: AttendanceData[] = [
+  { userId: "65d8754a1f9b3c001f5a7b21", attendance: "78" },
+  { userId: "65d8754b1f9b3c001f5a7b22", attendance: "85" },
+  { userId: "65d8754c1f9b3c001f5a7b23", attendance: "72" },
+  { userId: "65d8754d1f9b3c001f5a7b24", attendance: "90" },
+  { userId: "65d8754e1f9b3c001f5a7b25", attendance: "66" },
+  { userId: "65d8754f1f9b3c001f5a7b26", attendance: "80" },
+  { userId: "65d875501f9b3c001f5a7b27", attendance: "75" },
+  { userId: "65d875511f9b3c001f5a7b28", attendance: "88" },
+  { userId: "65d875521f9b3c001f5a7b29", attendance: "70" },
+  { userId: "65d875531f9b3c001f5a7b2a", attendance: "92" },
+  { userId: "65d875541f9b3c001f5a7b2b", attendance: "68" },
+  { userId: "65d875551f9b3c001f5a7b2c", attendance: "74" },
+  { userId: "65d875561f9b3c001f5a7b2d", attendance: "81" },
+  { userId: "65d875571f9b3c001f5a7b2e", attendance: "87" },
+  { userId: "65d875581f9b3c001f5a7b2f", attendance: "79" },
+  { userId: "65d875591f9b3c001f5a7b30", attendance: "91" },
+  { userId: "65d8755a1f9b3c001f5a7b31", attendance: "67" },
+  { userId: "65d8755b1f9b3c001f5a7b32", attendance: "84" },
+  { userId: "65d8755c1f9b3c001f5a7b33", attendance: "76" },
+  { userId: "65d8755d1f9b3c001f5a7b34", attendance: "82" },
+  { userId: "65d8755e1f9b3c001f5a7b35", attendance: "73" },
+  { userId: "65d8755f1f9b3c001f5a7b36", attendance: "89" },
+  { userId: "65d875601f9b3c001f5a7b37", attendance: "77" },
+  { userId: "65d875611f9b3c001f5a7b38", attendance: "83" },
+  { userId: "65d875621f9b3c001f5a7b39", attendance: "69" },
 ]
 
 
-const Class = () => {
+const Attendance = () => {
 
   // Hooks
   const { theme } = useTheme();
 
   const stats = useMemo(() => {
-    return dummyClassData.reduce(
+    return dummyAttendanceData.reduce(
       (acc, curr) => {
-        acc.totalClass += 1;
-        acc.totalStudents += parseInt(curr.students, 10);
-        acc.totalExams += parseInt(curr.exams, 10);
-        acc.totalUpdates += parseInt(curr.update, 10);
+        acc.total += 1;
+        acc.attendance += parseInt(curr.attendance, 10)
         return acc;
       },
-      { totalClass: 0, totalStudents: 0, totalExams: 0, totalUpdates: 0 }
+      {
+        total: 0, attendance: 0
+      }
     );
-  }, [dummyClassData])
+    // TODO : Add data source as dependency
+  }, [])
 
   // States
   const [filter, setFilter] = useState(initialFilters)
-  const [initialData, setInitialData] = useState<ClassData[]>([])
-  const [filteredData, setFilteredData] = useState(dummyClassData)
+  const [initialData, setInitialData] = useState<AttendanceData[]>([])
+  const [filteredData, setFilteredData] = useState(dummyAttendanceData)
 
 
   // Functions
   useEffect(() => {
-    const filterData = (classData: ClassData[], filterKey: keyof ClassData | undefined, filterValue: string | undefined, page: number) => {
+    const filterData = (AttendanceData: AttendanceData[], filterKey: keyof AttendanceData | undefined, filterValue: string | undefined, page: number) => {
 
-      let tmpData = [...classData];
+      let tmpData = [...AttendanceData];
 
       if (filterKey && filterValue) {
         setFilteredData(tmpData);
@@ -161,16 +95,16 @@ const Class = () => {
 
   useEffect(() => {
     if (!initialData || initialData.length === 0) {
-      setInitialData(dummyClassData)
+      setInitialData(dummyAttendanceData)
     }
   }, [initialData])
 
 
-  //# Logs  
+  //# Logs    
 
   return (
-    <div className={`${styles.class_container} ${styles[theme]}`}>
-      <div className={styles.title}>Class Model</div>
+    <div className={`${styles.attendance_container} ${styles[theme]}`}>
+      <div className={styles.title}>Attendance Model</div>
       <div className={styles.divider}></div>
       <div className={styles.actions}>
         <div className={styles.items}>
@@ -199,22 +133,18 @@ const Class = () => {
           <thead>
             <tr>
               <td>No</td>
-              <td>Name</td>
-              <td>Students</td>
-              <td>Exams</td>
-              <td>Updates</td>
+              <td>User Id</td>
+              <td>Attendance</td>
               <td>Actions</td>
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((classItem, index) => {
+            {filteredData.map((student, index) => {
               return (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{classItem.name}</td>
-                  <td>{classItem.students}</td>
-                  <td>{classItem.exams}</td>
-                  <td>{classItem.update}</td>
+                  <td>{student.userId}</td>
+                  <td>{student.attendance}</td>
                   <td>
                     <div className={styles.action_icons}>
                       <span title='View' className={styles.action_icon}><Eye /></span>
@@ -234,18 +164,14 @@ const Class = () => {
         <table>
           <thead>
             <tr>
-              <td>Total Classes</td>
-              <td>Total Students</td>
-              <td>Total Exams</td>
-              <td>Total Updates</td>
+              <td>Total Profiles</td>
+              <td>Total Attendance</td>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{stats.totalClass}</td>
-              <td>{stats.totalStudents}</td>
-              <td>{stats.totalExams}</td>
-              <td>{stats.totalUpdates}</td>
+              <td>{stats.total}</td>
+              <td>{stats.attendance}</td>
             </tr>
           </tbody>
         </table>
@@ -254,4 +180,4 @@ const Class = () => {
   )
 }
 
-export default Class
+export default Attendance

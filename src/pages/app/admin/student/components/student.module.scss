@@ -1,6 +1,7 @@
 @use '../../../../../styles/theme';
 
-.class_container {
+
+.student_container {
   @include theme.flex(column, flex-start, flex-start);
   height: auto;
   width: 100%;
@@ -152,7 +153,7 @@
   }
 }
 
-.class_container.dark {
+.student_container.dark {
   color: theme.$white100;
   background: theme.$black300;
 

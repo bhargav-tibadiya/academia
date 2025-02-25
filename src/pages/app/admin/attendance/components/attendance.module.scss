@@ -1,6 +1,7 @@
 @use '../../../../../styles/theme';
 
-.class_container {
+
+.attendance_container {
   @include theme.flex(column, flex-start, flex-start);
   height: auto;
   width: 100%;
@@ -112,7 +113,6 @@
           td {
             padding: 10px 0;
 
-
             .action_icons {
               @include theme.flex(row, center, center);
               gap: 5px;
@@ -152,7 +152,7 @@
   }
 }
 
-.class_container.dark {
+.attendance_container.dark {
   color: theme.$white100;
   background: theme.$black300;
 
