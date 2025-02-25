@@ -1,0 +1,12 @@
+@use '../../../../styles/theme';
+
+.admin_dashboard_layout {
+  @include theme.flex(row, stretch, flex-start);
+  gap: 20px;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+}
