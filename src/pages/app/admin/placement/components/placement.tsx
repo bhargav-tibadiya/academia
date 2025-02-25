@@ -179,7 +179,7 @@ const Placement = () => {
         <table>
           <thead>
             <tr>
-              <td>Total Profiles</td>
+              <td>Total Companies</td>
               <td>Total Applications</td>
             </tr>
           </thead>

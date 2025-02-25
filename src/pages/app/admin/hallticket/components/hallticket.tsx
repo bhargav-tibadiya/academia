@@ -107,7 +107,7 @@ const HallTicket = () => {
 
   return (
     <div className={`${styles.hallticket_container} ${styles[theme]}`}>
-      <div className={styles.title}>HallTicket Model</div>
+      <div className={styles.title}>Hall Ticket Model</div>
       <div className={styles.divider}></div>
       <div className={styles.actions}>
         <div className={styles.items}>
@@ -173,7 +173,7 @@ const HallTicket = () => {
         <table>
           <thead>
             <tr>
-              <td>Total Profiles</td>
+              <td>Total Hall Tickets</td>
               <td>Total Schedule</td>
             </tr>
           </thead>
