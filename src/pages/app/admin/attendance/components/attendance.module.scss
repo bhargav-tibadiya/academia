@@ -113,7 +113,6 @@
           td {
             padding: 10px 0;
 
-
             .action_icons {
               @include theme.flex(row, center, center);
               gap: 5px;
@@ -133,6 +132,14 @@
                   color: theme.$black100;
                 }
               }
+            }
+
+            &:first-child {
+              width: 100px;
+            }
+
+            &:last-child {
+              width: 150px;
             }
           }
 

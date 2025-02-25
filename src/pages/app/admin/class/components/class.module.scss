@@ -133,6 +133,14 @@
                 }
               }
             }
+
+            &:first-child {
+              width: 100px;
+            }
+
+            &:last-child {
+              width: 150px;
+            }
           }
 
           &:last-child {
