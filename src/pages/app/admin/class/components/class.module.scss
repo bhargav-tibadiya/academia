@@ -1,0 +1,203 @@
+@use '../../../../../styles/theme';
+
+.class_container {
+  @include theme.flex(column, flex-start, flex-start);
+  height: auto;
+  width: 100%;
+  padding: 20px 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: theme.$white100;
+  border: 1px solid theme.$white800;
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 10px 0;
+    border-bottom: 1px solid theme.$white500;
+  }
+
+  .section_title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .actions {
+    width: 100%;
+    @include theme.flex(row, flex-start, space-between);
+
+    .items {
+      @include theme.flex(row, flex-start, flex-start);
+      gap: 15px;
+
+      .item {
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        color: theme.$purple500;
+        background: theme.$purple100;
+        border: 1px solid theme.$purple100;
+        @include theme.flex(row, center, flex-start);
+        gap: 5px;
+
+        span {
+          @include theme.flex(row, center, flex-start);
+
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        &:hover {
+          border: 1px solid theme.$purple200;
+        }
+
+        &[disabled] {
+          color: theme.$white800;
+          background: theme.$white300;
+          border: 1px solid theme.$white800;
+          cursor: not-allowed;
+        }
+      }
+
+    }
+
+  }
+
+  .table,
+  .stats {
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 1px solid theme.$white800;
+
+    table {
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+      border-collapse: collapse;
+
+      thead {
+        width: 100%;
+        font-weight: 500;
+        background: theme.$white200;
+        border-bottom: 1px solid theme.$white800;
+
+        tr {
+          border-radius: 10px;
+
+          td {
+            padding: 10px 0;
+          }
+        }
+      }
+
+      tbody {
+        width: 100%;
+
+        tr {
+          border-radius: 10px;
+          border-bottom: 1px solid theme.$white800;
+
+          td {
+            padding: 10px 0;
+
+
+            .action_icons {
+              @include theme.flex(row, center, center);
+              gap: 5px;
+
+              .action_icon {
+                @include theme.flex(row, center, center);
+                cursor: pointer;
+                color: theme.$black800;
+
+                svg {
+                  @include theme.flex(row, center, center);
+                  width: 20px;
+                  height: 20px;
+                }
+
+                &:hover {
+                  color: theme.$black100;
+                }
+              }
+            }
+
+            &:first-child {
+              width: 100px;
+            }
+
+            &:last-child {
+              width: 150px;
+            }
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.class_container.dark {
+  color: theme.$white100;
+  background: theme.$black300;
+
+  .actions {
+    .items {
+      .item {
+        color: theme.$purple200;
+        background: theme.$purple700;
+        border: 1px solid theme.$purple700;
+
+        &:hover {
+          border: 1px solid theme.$purple200;
+        }
+
+        &[disabled] {
+          color: theme.$white800;
+          background: theme.$black400;
+          border: 1px solid theme.$white800;
+          cursor: not-allowed;
+        }
+      }
+
+    }
+  }
+
+  .table,
+  .stats {
+    table {
+      thead {
+        background: theme.$black400;
+      }
+
+      tbody {
+        tr {
+          td {
+            .action_icons {
+              .action_icon {
+                &:hover {
+                  color: theme.$white100;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
