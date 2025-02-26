@@ -21,12 +21,12 @@ export const loginThunk = createAsyncThunk<LoginThunkResponse, LoginThunkPayload
     try {
       const response = await authServices.login(payload);
       if (response.status === 200 && response.data.success) {
+        sessionStorage.setItem("token", response.data.data.token)
         return response.data;
       } else {
         return rejectWithValue(response.data)
       }
     } catch (error) {
-      // return rejectWithValue(error.data)
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.response?.data ?? defaultError);
       }

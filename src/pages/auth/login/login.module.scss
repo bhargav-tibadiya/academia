@@ -4,7 +4,6 @@
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: theme.$white100;
   padding: 6px;
 
   .content {
@@ -93,6 +92,7 @@
                 outline: none;
                 font-size: 20px;
                 transition: all 0.3s ease;
+                background: transparent;
                 border-bottom: 1px solid theme.$black700;
 
                 &:focus {
@@ -201,6 +201,29 @@
 
         &:hover {
           background: theme.$purple500;
+        }
+      }
+    }
+  }
+}
+
+.login_container.dark {
+  .content {
+    color: theme.$white100;
+
+    .right {
+      .form {
+        form {
+          .part2 {
+
+            .input_email,
+            .input_password {
+              input {
+                color: theme.$white100;
+                background: theme.$black100;
+              }
+            }
+          }
         }
       }
     }

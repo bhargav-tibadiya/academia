@@ -6,8 +6,6 @@ import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
-import { PersistGate } from 'redux-persist/integration/react'
-import { persistStore } from 'redux-persist'
 import { Toaster } from 'react-hot-toast'
 
 createRoot(document.getElementById('root')!).render(
@@ -15,9 +13,7 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <BrowserRouter>
         <Toaster containerClassName='hotToast' toastOptions={{ duration: 5000 }} />
-        <PersistGate persistor={persistStore(store)}>
-          <App />
-        </PersistGate>
+        <App />
       </BrowserRouter>
     </Provider>
   </StrictMode>,
