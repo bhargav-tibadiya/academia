@@ -1,11 +1,20 @@
 // Packages
 import { Navigate, Outlet } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 
 // Configs & Utils
 import { ROUTES } from "../../utils/constants/routes";
 
-const AuthWrapper = () => {
+// Types
+interface TokenType extends JwtPayload {
+  id: string;
+  role: string;
+  email: string;
+  userId: string;
+}
+
+
+const AdminWrapper = () => {
   // Hooks
   const token = sessionStorage.getItem("token")
 
@@ -13,10 +22,10 @@ const AuthWrapper = () => {
 
   if (token) {
     try {
-      const decoded = jwtDecode(token);
+      const decoded: TokenType = jwtDecode(token);
       const currentTime = Math.floor(Date.now() / 1000);
 
-      if (decoded.exp && decoded.exp > currentTime) {
+      if (decoded.exp && decoded.exp > currentTime && decoded.role === "admin") {
         isValid = true;
       } else {
         sessionStorage.removeItem("token");
@@ -32,4 +41,4 @@ const AuthWrapper = () => {
   )
 }
 
-export default AuthWrapper
+export default AdminWrapper

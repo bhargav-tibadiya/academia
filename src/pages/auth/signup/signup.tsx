@@ -79,7 +79,7 @@ const Signup = () => {
 
   useEffect(() => {
     setRole(watch('role'))
-  }, [watch('role')])
+  }, [watch])
 
   return (
     <div className={`${styles.signup_container} ${styles[theme]}`}>
