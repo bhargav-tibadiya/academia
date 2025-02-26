@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { useAppDispatch } from "../../../store/store";
 
 // Styles & Assets
 import styles from './login.module.scss'
@@ -23,7 +23,6 @@ const Login = () => {
   const { theme } = useTheme();
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const { token } = useAppSelector((state) => state.auth)
 
 
   // THis is form
