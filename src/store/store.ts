@@ -1,11 +1,8 @@
 // Packages
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
 import { useDispatch, useSelector } from 'react-redux'
 
 // Configs
-import sessionStorage from "redux-persist/lib/storage/session";
-import { encryptTransform } from "redux-persist-transform-encrypt";
 
 // Reducer
 import rootReducer from "./root.reducer";
@@ -18,34 +15,14 @@ export interface RootStoreState {
   general: GeneralState
 }
 
-
-const persistConfig = {
-  key: "root",
-  storage: sessionStorage,
-  throttle: 1000,
-  timeout: 100,
-  whitelist: ["auth"],
-  transforms: [
-    encryptTransform({
-      secretKey: "your-secret-key",
-      onError: function (error) {
-        console.error("Encryption error:", error);
-      },
-    }),
-  ],
-};
-
-const persistedReducer = persistReducer<RootStoreState>(persistConfig, rootReducer);
-
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
 });
 
-export const persistor = persistStore(store);
 
 // Exporting typed Dispatch and Selector
 export type RootState = ReturnType<typeof store.getState>

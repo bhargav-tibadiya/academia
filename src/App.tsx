@@ -12,6 +12,10 @@ import useTheme from './utils/hooks/useTheme'
 
 // Components
 
+//  --> WRAPPER
+import AuthWrapper from './components/layouts/auth-wrapper'
+import AdminWrapper from './components/layouts/admin-wrapper'
+
 // --> AUTH
 import Login from './pages/auth/login/login'
 import Signup from './pages/auth/signup/signup'
@@ -42,24 +46,36 @@ function App() {
     <>
       <div className={`RootContainer ${theme}`}>
         <Routes>
+
+          {/* Public routes */}
           <Route path={ROUTES.LOGIN} Component={Login} />
           <Route path={ROUTES.SIGNUP} Component={Signup} />
 
-          <Route path={ROUTES.ADMIN_DASHBOARD} Component={AdminDashboardPage} />
-          <Route path={ROUTES.ADMIN_ATTENDANCE} Component={AdminAttendancePage} />
-          <Route path={ROUTES.ADMIN_CLASS} Component={AdminClassPage} />
-          <Route path={ROUTES.ADMIN_FEES} Component={AdminFeesPage} />
-          <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminHallTicketPage} />
-          <Route path={ROUTES.ADMIN_INSTITUTE} Component={AdminInstitutePage} />
-          <Route path={ROUTES.ADMIN_NOTIFICATION} Component={AdminNotificationPage} />
-          <Route path={ROUTES.ADMIN_PLACEMENT} Component={AdminPlacementPage} />
-          <Route path={ROUTES.ADMIN_PROFILE} Component={AdminProfilePage} />
-          <Route path={ROUTES.ADMIN_REQUEST} Component={AdminRequestPage} />
-          <Route path={ROUTES.ADMIN_RESULT} Component={AdminResultPage} />
-          <Route path={ROUTES.ADMIN_STUDENT} Component={AdminStudentPage} />
-          <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminTimetablePage} />
-          <Route path={ROUTES.ADMIN_UPDATE} Component={AdminUpdatePage} />
-          <Route path={ROUTES.ADMIN_USER} Component={AdminUserPage} />
+          {/* Protected routes */}
+          <Route element={<AuthWrapper />}>
+
+          </Route>
+
+          {/* Admin routes */}
+          <Route element={<AdminWrapper />}>
+
+            <Route path={ROUTES.ADMIN_DASHBOARD} Component={AdminDashboardPage} />
+            <Route path={ROUTES.ADMIN_ATTENDANCE} Component={AdminAttendancePage} />
+            <Route path={ROUTES.ADMIN_CLASS} Component={AdminClassPage} />
+            <Route path={ROUTES.ADMIN_FEES} Component={AdminFeePage} />
+            <Route path={ROUTES.ADMIN_HALLTICKET} Component={AdminHallTicketPage} />
+            <Route path={ROUTES.ADMIN_INSTITUTE} Component={AdminInstitutePage} />
+            <Route path={ROUTES.ADMIN_NOTIFICATION} Component={AdminNotificationPage} />
+            <Route path={ROUTES.ADMIN_PLACEMENT} Component={AdminPlacementPage} />
+            <Route path={ROUTES.ADMIN_PROFILE} Component={AdminProfilePage} />
+            <Route path={ROUTES.ADMIN_REQUEST} Component={AdminRequestPage} />
+            <Route path={ROUTES.ADMIN_RESULT} Component={AdminResultPage} />
+            <Route path={ROUTES.ADMIN_STUDENT} Component={AdminStudentPage} />
+            <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminTimetablePage} />
+            <Route path={ROUTES.ADMIN_UPDATE} Component={AdminUpdatePage} />
+            <Route path={ROUTES.ADMIN_USER} Component={AdminUserPage} />
+
+          </Route>
 
         </Routes>
       </div>
