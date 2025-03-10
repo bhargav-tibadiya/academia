@@ -11,6 +11,8 @@ const requestInstance = axios.create({
 const requestProtected = {
   get: (url: string) => requestInstance.get(url),
   post: async (url: string, data: any) => requestInstance.post(url, data),
+  put: async (url: string, data: any) => requestInstance.put(url, data),
+  delete: async (url: string) => requestInstance.delete(url),
 }
 
 
@@ -20,7 +22,7 @@ export default requestProtected
 // interceptors
 requestInstance.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

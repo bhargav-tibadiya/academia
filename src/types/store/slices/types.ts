@@ -1,3 +1,5 @@
+import { User } from "../thunks/dashboard";
+
 // Auth Slice
 export interface AuthState {
   user: {
@@ -13,4 +15,10 @@ export type Theme = 'light' | 'dark';
 
 export interface GeneralState {
   theme: Theme;
+}
+
+// Dashboard Slice
+export interface DashboardState {
+  users: User[]
+  selectedUser: User | null
 }

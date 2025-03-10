@@ -47,6 +47,7 @@ const Login = () => {
       }
       await dispatch(loginThunk(payload)).unwrap()
       toast.success("Login Successful")
+      navigate(ROUTES.ADMIN_DASHBOARD)
 
     } catch (error: any) {
       const errorMessage = error?.message || error?.data?.message || 'An unexpected error occurred';
