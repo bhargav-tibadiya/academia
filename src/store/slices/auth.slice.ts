@@ -2,10 +2,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Types & Const
-import { AuthState } from "../../types/store/slices/types";
+import { AuthState } from "@/types/store/slices/types";
 
 // Thunks
-import { loginThunk, sendOTPThunk, signupThunk } from "../thunks/auth.thunk";
+import { loginThunk, sendOTPThunk, signupThunk } from "@/store/thunks/auth.thunk";
 
 
 const initialState: AuthState = {

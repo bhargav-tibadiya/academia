@@ -4,18 +4,18 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch } from "../../../store/store";
+import { useAppDispatch } from '@/store/store';
 
 // Styles & Assets
 import styles from './login.module.scss'
-import { loginBackground } from '../../../assets/image/rootimage'
-import { ChevronRight, CircleAlert } from '../../../assets/icon/rooticon'
+import { loginBackground } from '@/assets/image/rootimage'
+import { ChevronRight, CircleAlert } from '@/assets/icon/rooticon'
 
 // Utils & Constant
-import useTheme from "../../../utils/hooks/useTheme";
-import { ROUTES } from "../../../utils/constants/routes";
-import { loginThunk } from "../../../store/thunks/auth.thunk";
-import { LoginFormType, loginSchema } from '../../../utils/forms/schema';
+import useTheme from '@/utils/hooks/useTheme';
+import { ROUTES } from '@/utils/constants/routes';
+import { loginThunk } from '@/store/thunks/auth.thunk';
+import { LoginFormType, loginSchema } from '@/utils/forms/schema';
 
 const Login = () => {
 
@@ -25,7 +25,7 @@ const Login = () => {
   const dispatch = useAppDispatch()
 
 
-  // THis is form
+  // Form
   const loginForm = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     mode: "onSubmit",

@@ -22,7 +22,7 @@ import {
   Edit,
   ArrowLeft,
   ArrowRight,
-  Plus
+  Plus,
 } from 'lucide-react'
 
 export {

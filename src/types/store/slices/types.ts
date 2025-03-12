@@ -1,4 +1,4 @@
-import { User } from "../thunks/dashboard";
+import { User } from "@/types/store/thunks/dashboard";
 
 // Auth Slice
 export interface AuthState {

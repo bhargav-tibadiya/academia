@@ -4,19 +4,19 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../../store/store";
+import { useAppDispatch } from '@/store/store';
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Styles & Assets
 import styles from './signup.module.scss'
-import { ChevronRight, CircleAlert } from '../../../assets/icon/rooticon'
+import { ChevronRight, CircleAlert } from '@/assets/icon/rooticon'
 
 // Utils & Constant
-import useTheme from "../../../utils/hooks/useTheme";
-import { ROUTES } from "../../../utils/constants/routes";
-import { SignupFormType, signupSchema } from "../../../utils/forms/schema";
-import { sendOTPThunk, signupThunk } from "../../../store/thunks/auth.thunk";
-import { loginBackground as signupBackground } from "../../../assets/image/rootimage";
+import useTheme from '@/utils/hooks/useTheme';
+import { ROUTES } from '@/utils/constants/routes';
+import { SignupFormType, signupSchema } from '@/utils/forms/schema';
+import { sendOTPThunk, signupThunk } from '@/store/thunks/auth.thunk';
+import { loginBackground as signupBackground } from '@/assets/image/rootimage';
 
 const Signup = () => {
 

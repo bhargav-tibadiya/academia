@@ -1,17 +1,19 @@
 // Packages & Hooks
-import { useAppDispatch, useAppSelector } from '../../../../../store/store';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 
 // Styles
 import styles from './user.module.scss'
 
 // Icons
-import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '../../../../../assets/icon/rooticon'
+import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '@/assets/icon/rooticon'
 
 // Utils & Config
-import useTheme from '../../../../../utils/hooks/useTheme';
+import useTheme from '@/utils/hooks/useTheme';
 import { useEffect, useMemo, useState } from 'react';
-import { getAllUsersThunk, getUserByIdThunk } from '../../../../../store/thunks/dashboard.thunk';
-import { User } from '../../../../../types/store/thunks/dashboard';
+import { getAllUsersThunk } from '@/store/thunks/dashboard.thunk';
+import { User } from '@/types/store/thunks/dashboard';
+import UserForm from '@/components/forms/user/form';
+import { Tooltip } from 'antd';
 
 // Constants & Types
 const initialFilters = {
@@ -20,7 +22,6 @@ const initialFilters = {
   page: 1,
   recordPerPage: 10
 }
-
 
 // TODO : Add loading and filter if required
 const Class = () => {
@@ -47,6 +48,9 @@ const Class = () => {
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null)
   const [filter, setFilter] = useState(initialFilters)
   const [filteredData, setFilteredData] = useState<User[]>([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [mode, setMode] = useState<"view" | "edit">("view");
+
 
   // ----->> Functions <<-----
   const getAllUsers = async () => {
@@ -57,12 +61,9 @@ const Class = () => {
     }
   }
 
-  const getUserById = async (userId: string) => {
-    try {
-      await dispatch(getUserByIdThunk(userId)).unwrap();
-    } catch (error) {
-      console.log(error);
-    }
+  const handleClose = () => {
+    setIsOpen(false);
+    setSelectedUserId(null);
   }
 
   // ----->> Filtering <<-----
@@ -93,7 +94,7 @@ const Class = () => {
 
   useEffect(() => {
     if (selectedUserId) {
-      getUserById(selectedUserId)
+      setIsOpen(true)
     }
   }, [selectedUserId])
 
@@ -108,7 +109,9 @@ const Class = () => {
         <div className={styles.divider}></div>
         <div className={styles.actions}>
           <div className={styles.items}>
-            <div className={styles.item}><span><Plus /></span>Add</div>
+            <Tooltip title="You are not allowed to add user. Only way to add user is by signing up" color={"#FF4040"}>
+              <div className={`${styles.item} ${styles.add_item}`}><span><Plus /></span>Add</div>
+            </Tooltip>
           </div>
           <div className={styles.items}>
             <button
@@ -151,8 +154,8 @@ const Class = () => {
                     <td>{classItem.status}</td>
                     <td>
                       <div className={styles.action_icons}>
-                        <span title='View' onClick={() => setSelectedUserId(classItem._id)} className={styles.action_icon}><Eye /></span>
-                        <span title='Edit' onClick={() => setSelectedUserId(classItem._id)} className={styles.action_icon}><Edit /></span>
+                        <span title='View' onClick={() => { setSelectedUserId(classItem._id); setMode("view") }} className={styles.action_icon}><Eye /></span>
+                        <span title='Edit' onClick={() => { setSelectedUserId(classItem._id); setMode("edit") }} className={styles.action_icon}><Edit /></span>
                       </div>
                     </td>
                   </tr>
@@ -187,6 +190,7 @@ const Class = () => {
           </table>
         </div>
       </div >
+      <UserForm mode={mode} isOpen={isOpen} onClose={handleClose} selectedUserId={selectedUserId} />
     </>
   )
 }

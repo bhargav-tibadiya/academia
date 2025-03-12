@@ -2,10 +2,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Types & Const
-import { DashboardState } from "../../types/store/slices/types";
+import { DashboardState } from "@/types/store/slices/types";
 
 // Thunks
-import { getAllUsersThunk, getUserByIdThunk } from "../thunks/dashboard.thunk";
+import { getAllUsersThunk, getUserByIdThunk, updateUserThunk } from "@/store/thunks/dashboard.thunk";
 
 
 const initialState: DashboardState = {
@@ -52,6 +52,24 @@ const dashboardSlice = createSlice({
           }
         })
         .addCase(getUserByIdThunk.rejected, (state) => {
+          return {
+            ...state
+          }
+        })
+
+        .addCase(updateUserThunk.pending, (state) => {
+          return {
+            ...state
+          }
+        })
+        .addCase(updateUserThunk.fulfilled, (state, action) => {
+          return {
+            ...state,
+            selectedUser: action.payload.data,
+            users: state.users.map((user) => user._id === action.payload.data._id ? action.payload.data : user)
+          }
+        })
+        .addCase(updateUserThunk.rejected, (state) => {
           return {
             ...state
           }

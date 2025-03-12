@@ -1,9 +1,9 @@
 // Styles
 import styles from './attendance.module.scss'
-import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '../../../../../assets/icon/rooticon'
+import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '@/assets/icon/rooticon'
 
 // Utils & Config
-import useTheme from '../../../../../utils/hooks/useTheme';
+import useTheme from '@/utils/hooks/useTheme';
 import { useEffect, useMemo, useState } from 'react';
 
 // Constants & Types

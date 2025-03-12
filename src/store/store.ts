@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 // Configs
 
 // Reducer
-import rootReducer from "./root.reducer";
+import rootReducer from "@/store/root.reducer";
 
 // Types & Const
-import { AuthState, GeneralState } from "../types/store/slices/types";
+import { AuthState, GeneralState } from "@/types/store/slices/types";
 
 export interface RootStoreState {
   auth: AuthState;

@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// ----->> Auth Schema <<-----
 export const loginSchema = z.object({
   email:
     z.string()
@@ -39,3 +40,23 @@ export const signupSchema = z.object({
     .regex(/^[a-zA-Z0-9]{8}$/, "OTP must contain only numbers and letters"),
 });
 export type SignupFormType = z.infer<typeof signupSchema>;
+
+// ----->> Admin Schema <<-----
+export const userSchema = z.object({
+  id: z.string().optional(),
+  userId: z.string().optional(),
+  email:
+    z.string()
+      .min(1, "Email is required")
+      .email("Invalid email format")
+      .regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email format"),
+  role:
+    z.enum(["student", "teacher", "admin"], {
+      errorMap: () => ({ message: "Role must be either 'Student', 'Teacher', or 'Admin'" }),
+    }),
+  status:
+    z.enum(["none", "applied", "accepted", "rejected"], {
+      errorMap: () => ({ message: "Status must be either 'None', 'Applied', 'Accepted', or 'Rejected'" }),
+    }),
+});
+export type UserFormType = z.infer<typeof userSchema>;

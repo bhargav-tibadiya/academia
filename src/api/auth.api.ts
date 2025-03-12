@@ -1,9 +1,9 @@
 // Utils & Config
-import requestProtected from "./root.api";
+import requestProtected from "@/api/root.api";
 
 // Types & Constant
-import { LoginThunkPayload, SendOTPThunkPayload, SignupThunkPayload } from "../types/store/thunks/auth";
-import { API } from "../utils/constants/api";
+import { LoginThunkPayload, SendOTPThunkPayload, SignupThunkPayload } from "@/types/store/thunks/auth";
+import { API } from "@/utils/constants/api";
 
 export const authServices = {
   login: (data: LoginThunkPayload) => requestProtected.post(API.AUTH.LOGIN, data),
