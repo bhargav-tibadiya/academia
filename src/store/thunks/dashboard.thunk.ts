@@ -6,11 +6,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userServices } from "@/api/user.api";
 
 // Types & Const
-import { CreateClassThunkRequest, CreateClassThunkResponse, CreateDepartmentThunkRequest, CreateDepartmentThunkResponse, CreateInstituteThunkRequest, CreateInstituteThunkResponse, CreateUpdateThunkRequest, CreateUpdateThunkResponse, DeleteClassThunkRequest, DeleteClassThunkResponse, DeleteDepartmentThunkRequest, DeleteDepartmentThunkResponse, DeleteInstituteThunkRequest, DeleteInstituteThunkResponse, DeleteUpdateThunkRequest, DeleteUpdateThunkResponse, GetAllClassThunkResponse, GetAllDepartmentThunkResponse, GetAllInstituteThunkResponse, GetAllUpdateThunkResponse, GetAllUsersThunkResponse, GetClassByIdThunkRequest, GetClassByIdThunkResponse, GetDepartmentByIdThunkRequest, GetDepartmentByIdThunkResponse, GetInstituteByIdThunkRequest, GetInstituteByIdThunkResponse, GetUpdateByIdThunkRequest, GetUpdateByIdThunkResponse, GetUserByIdThunkResponse, UpdateClassThunkRequest, UpdateClassThunkResponse, UpdateDepartmentThunkRequest, UpdateDepartmentThunkResponse, UpdateInstituteThunkRequest, UpdateInstituteThunkResponse, UpdateUpdateThunkRequest, UpdateUpdateThunkResponse, UpdateUserThunkRequest, UpdateUserThunkResponse } from "@/types/store/thunks/dashboard";
+import { CreateClassThunkRequest, CreateClassThunkResponse, CreateDepartmentThunkRequest, CreateDepartmentThunkResponse, CreateInstituteThunkRequest, CreateInstituteThunkResponse, CreateProfileThunkRequest, CreateProfileThunkResponse, CreateUpdateThunkRequest, CreateUpdateThunkResponse, DeleteClassThunkRequest, DeleteClassThunkResponse, DeleteDepartmentThunkRequest, DeleteDepartmentThunkResponse, DeleteInstituteThunkRequest, DeleteInstituteThunkResponse, DeleteProfileThunkRequest, DeleteProfileThunkResponse, DeleteUpdateThunkRequest, DeleteUpdateThunkResponse, GetAllClassThunkResponse, GetAllDepartmentThunkResponse, GetAllInstituteThunkResponse, GetAllProfileThunkResponse, GetAllUpdateThunkResponse, GetAllUsersThunkResponse, GetClassByIdThunkRequest, GetClassByIdThunkResponse, GetDepartmentByIdThunkRequest, GetDepartmentByIdThunkResponse, GetInstituteByIdThunkRequest, GetInstituteByIdThunkResponse, GetProfileByIdThunkRequest, GetProfileByIdThunkResponse, GetUpdateByIdThunkRequest, GetUpdateByIdThunkResponse, GetUserByIdThunkResponse, UpdateClassThunkRequest, UpdateClassThunkResponse, UpdateDepartmentThunkRequest, UpdateDepartmentThunkResponse, UpdateInstituteThunkRequest, UpdateInstituteThunkResponse, UpdateProfileThunkRequest, UpdateProfileThunkResponse, UpdateUpdateThunkRequest, UpdateUpdateThunkResponse, UpdateUserThunkRequest, UpdateUserThunkResponse } from "@/types/store/thunks/dashboard";
 import { updateServices } from "@/api/update.api";
 import { instituteServices } from "@/api/institute.api";
 import { departmentServices } from "@/api/department.api";
 import { classServices } from "@/api/class.api";
+import { profileServices } from "@/api/profile.api";
 
 // ----->> COMMON <<-----
 const defaultError = {
@@ -435,6 +436,100 @@ export const deleteClassThunk = createAsyncThunk<DeleteClassThunkResponse, Delet
       const response = await classServices.deleteClass(data);
       if (response.status === 200 && response.data.success) {
         response.data = { _id: data.classId }
+        return response.data;
+      }
+      return rejectWithValue(response.data)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? defaultError);
+      }
+      return rejectWithValue(defaultError);
+    }
+  }
+)
+
+// ----->> PROFILE <<-----
+export const getAllProfileThunk = createAsyncThunk<GetAllProfileThunkResponse, void>(
+  'dashboard/profile/get',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await profileServices.getAllProfile();
+      if (response.status === 200 && response.data.success) {
+        return response.data;
+      }
+      return rejectWithValue(response.data)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? defaultError);
+      }
+      return rejectWithValue(defaultError);
+    }
+  }
+)
+
+export const getProfileByIdThunk = createAsyncThunk<GetProfileByIdThunkResponse, GetProfileByIdThunkRequest>(
+  'dashboard/profile/getById',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await profileServices.getProfileById(data);
+
+      if (response.status === 200 && response.data.success) {
+        return response.data;
+      }
+      return rejectWithValue(response.data)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? defaultError);
+      }
+      return rejectWithValue(defaultError);
+    }
+  }
+)
+
+export const createProfileThunk = createAsyncThunk<CreateProfileThunkResponse, CreateProfileThunkRequest>(
+  'dashboard/profile/create',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await profileServices.createProfile(data);
+      if (response.status === 201 && response.data.success) {
+        return response.data;
+      }
+      return rejectWithValue(response.data)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? defaultError);
+      }
+      return rejectWithValue(defaultError);
+    }
+  }
+)
+
+export const updateProfileThunk = createAsyncThunk<UpdateProfileThunkResponse, UpdateProfileThunkRequest>(
+  'dashboard/profile/update',
+  async (data, { rejectWithValue }) => {
+    try {
+      const { profileId, ...payload } = data;
+      const response = await profileServices.updateProfile(profileId, payload);
+      if (response.status === 200 && response.data.success) {
+        return response.data;
+      }
+      return rejectWithValue(response.data)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? defaultError);
+      }
+      return rejectWithValue(defaultError);
+    }
+  }
+)
+
+export const deleteProfileThunk = createAsyncThunk<DeleteProfileThunkResponse, DeleteProfileThunkRequest>(
+  'dashboard/profile/delete',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await profileServices.deleteProfile(data);
+      if (response.status === 200 && response.data.success) {
+        response.data = { _id: data.profileId }
         return response.data;
       }
       return rejectWithValue(response.data)

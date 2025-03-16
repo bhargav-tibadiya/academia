@@ -6,6 +6,7 @@ interface StandardResponse {
 
 export type UserStatus = "none" | "applied" | "accepted" | "rejected"
 export type UserRole = "student" | "teacher" | "admin"
+export type GenderType = "Male" | "Female" | "Other"
 
 // ----->> COMMON <<-----
 export interface User {
@@ -54,6 +55,23 @@ export interface Class {
   updates: string[]
   createdAt: string
   updatedAt: string
+}
+
+export interface Profile {
+  _id: string
+  userId: number
+  firstName: string
+  middleName: string
+  lastName: string
+  gender: GenderType
+  birthDate: string
+  bloodGroup: string
+  address: string
+  contact: string
+  fatherName: string
+  fatherContact: string
+  motherName: string
+  motherContact: string
 }
 
 // ----->> USERS <<-----
@@ -209,7 +227,7 @@ export interface GetClassByIdThunkRequest {
 }
 export interface GetClassByIdThunkResponse extends StandardResponse {
   data: Class
-} 
+}
 //  
 export interface CreateClassThunkRequest {
   name: string
@@ -230,11 +248,69 @@ export interface UpdateClassThunkRequest {
 }
 export interface UpdateClassThunkResponse extends StandardResponse {
   data: Class
-} 
+}
 //
 export interface DeleteClassThunkRequest {
   classId: string
 }
 export interface DeleteClassThunkResponse extends StandardResponse {
+  _id: string
+}
+
+// ----->> PROFILE <<-----
+export interface GetAllProfileThunkResponse extends StandardResponse {
+  data: Profile[]
+}
+//
+export interface GetProfileByIdThunkRequest {
+  profileId: string
+}
+export interface GetProfileByIdThunkResponse extends StandardResponse {
+  data: Profile
+}
+//  
+export interface CreateProfileThunkRequest {
+  firstName: string
+  middleName: string
+  lastName: string
+  gender: GenderType
+  birthDate: string
+  bloodGroup: string
+  address: string
+  contact: string
+  fatherName: string
+  fatherContact: string
+  motherName: string
+  motherContact: string
+}
+export interface CreateProfileThunkResponse extends StandardResponse {
+  data: Profile
+}
+//
+export interface UpdateProfileAPIPayload {
+  firstName: string
+  middleName: string
+  lastName: string
+  gender: GenderType
+  birthDate: string
+  bloodGroup: string
+  address: string
+  contact: string
+  fatherName: string
+  fatherContact: string
+  motherName: string
+  motherContact: string
+}
+export interface UpdateProfileThunkRequest extends UpdateProfileAPIPayload {
+  profileId: string
+}
+export interface UpdateProfileThunkResponse extends StandardResponse {
+  data: Profile
+}
+//
+export interface DeleteProfileThunkRequest {
+  profileId: string
+}
+export interface DeleteProfileThunkResponse extends StandardResponse {
   _id: string
 }

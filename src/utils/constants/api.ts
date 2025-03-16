@@ -38,5 +38,12 @@ export const API = {
     CREATE: "/class",
     UPDATE: "/class/:classId",
     DELETE: "/class/:classId"
-  }
+  },
+  PROFILE: {
+    GET: "/profile",
+    GET_BY_ID: "/profile/:profileId",
+    CREATE: "/profile",
+    UPDATE: "/profile/:profileId",
+    DELETE: "/profile/:profileId"
+  } 
 };

@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { DashboardState } from "@/types/store/slices/types";
 
 // Thunks
-import { createInstituteThunk, createUpdateThunk, deleteInstituteThunk, deleteUpdateThunk, getAllDepartmentThunk, getAllInstituteThunk, getAllUpdateThunk, getAllUsersThunk, getDepartmentByIdThunk, getInstituteByIdThunk, getUpdateByIdThunk, getUserByIdThunk, updateInstituteThunk, updateUpdateThunk, updateUserThunk, createDepartmentThunk, updateDepartmentThunk, deleteDepartmentThunk, getAllClassThunk, getClassByIdThunk, createClassThunk, updateClassThunk, deleteClassThunk } from "@/store/thunks/dashboard.thunk";
+import { createInstituteThunk, createUpdateThunk, deleteInstituteThunk, deleteUpdateThunk, getAllDepartmentThunk, getAllInstituteThunk, getAllUpdateThunk, getAllUsersThunk, getDepartmentByIdThunk, getInstituteByIdThunk, getUpdateByIdThunk, getUserByIdThunk, updateInstituteThunk, updateUpdateThunk, updateUserThunk, createDepartmentThunk, updateDepartmentThunk, deleteDepartmentThunk, getAllClassThunk, getClassByIdThunk, createClassThunk, updateClassThunk, deleteClassThunk, getAllProfileThunk, getProfileByIdThunk, createProfileThunk, updateProfileThunk, deleteProfileThunk } from "@/store/thunks/dashboard.thunk";
 
 
 const initialState: DashboardState = {
@@ -18,7 +18,9 @@ const initialState: DashboardState = {
   departments: [],
   selectedDepartment: null,
   classes: [],
-  selectedClass: null
+  selectedClass: null,
+  profiles: [],
+  selectedProfile: null
 };
 
 const dashboardSlice = createSlice({
@@ -422,6 +424,92 @@ const dashboardSlice = createSlice({
           }
         })
         .addCase(deleteClassThunk.rejected, (state) => {
+          return {
+            ...state
+          }
+        })
+
+        // ----->> Profiles <<-----
+        .addCase(getAllProfileThunk.pending, (state) => {
+          return {
+            ...state
+          }
+        })
+        .addCase(getAllProfileThunk.fulfilled, (state, action) => {
+          return {
+            ...state,
+            profiles: action.payload.data
+          }
+        })
+        .addCase(getAllProfileThunk.rejected, (state) => {
+          return {
+            ...state
+          }
+        })
+
+        .addCase(getProfileByIdThunk.pending, (state) => {
+          return {
+            ...state
+          }
+        })
+        .addCase(getProfileByIdThunk.fulfilled, (state, action) => {
+          return {
+            ...state,
+            selectedProfile: action.payload.data
+          }
+        })
+        .addCase(getProfileByIdThunk.rejected, (state) => {
+          return {
+            ...state
+          }
+        })
+
+        .addCase(createProfileThunk.pending, (state) => {
+          return {
+            ...state
+          }
+        })
+        .addCase(createProfileThunk.fulfilled, (state, action) => {
+          return {
+            ...state,
+            profiles: [...state.profiles, action.payload.data]
+          }
+        })
+        .addCase(createProfileThunk.rejected, (state) => {
+          return {
+            ...state
+          }
+        })
+
+        .addCase(updateProfileThunk.pending, (state) => {
+          return {
+            ...state
+          }
+        })
+        .addCase(updateProfileThunk.fulfilled, (state, action) => {
+          return {
+            ...state,
+            profiles: state.profiles.map((profile) => profile._id === action.payload.data._id ? action.payload.data : profile)
+          }
+        })
+        .addCase(updateProfileThunk.rejected, (state) => {
+          return {
+            ...state
+          }
+        })
+
+        .addCase(deleteProfileThunk.pending, (state) => {
+          return {
+            ...state
+          }
+        })
+        .addCase(deleteProfileThunk.fulfilled, (state, action) => {
+          return {
+            ...state,
+            profiles: state.profiles.filter((profile) => profile._id !== action.payload._id)
+          }
+        })
+        .addCase(deleteProfileThunk.rejected, (state) => {
           return {
             ...state
           }
