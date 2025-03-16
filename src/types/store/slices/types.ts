@@ -1,4 +1,4 @@
-import { User } from "@/types/store/thunks/dashboard";
+import { Class, Department, Institute, Update, User } from "@/types/store/thunks/dashboard";
 
 // Auth Slice
 export interface AuthState {
@@ -21,4 +21,12 @@ export interface GeneralState {
 export interface DashboardState {
   users: User[]
   selectedUser: User | null
+  institutes: Institute[]
+  selectedInstitute: Institute | null
+  updates: Update[]
+  selectedUpdate: Update | null
+  departments: Department[]
+  selectedDepartment: Department | null
+  classes: Class[]
+  selectedClass: Class | null
 }

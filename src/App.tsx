@@ -36,6 +36,7 @@ import AdminResultPage from '@/pages/app/admin/result/layout'
 import AdminTimetablePage from '@/pages/app/admin/timetable/layout'
 import AdminUpdatePage from '@/pages/app/admin/update/layout'
 import AdminFeePage from '@/pages/app/admin/fee/layout'
+import AdminDepartmentPage from '@/pages/app/admin/department/layout'
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
             <Route path={ROUTES.ADMIN_TIMETABLE} Component={AdminTimetablePage} />
             <Route path={ROUTES.ADMIN_UPDATE} Component={AdminUpdatePage} />
             <Route path={ROUTES.ADMIN_USER} Component={AdminUserPage} />
+            <Route path={ROUTES.ADMIN_DEPARTMENT} Component={AdminDepartmentPage} />
 
           </Route>
 

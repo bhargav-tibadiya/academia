@@ -41,7 +41,9 @@ export const signupSchema = z.object({
 });
 export type SignupFormType = z.infer<typeof signupSchema>;
 
-// ----->> Admin Schema <<-----
+// ----->> Admin Panel <<-----
+
+// ----->> User Schema <<-----
 export const userSchema = z.object({
   id: z.string().optional(),
   userId: z.string().optional(),
@@ -60,3 +62,27 @@ export const userSchema = z.object({
     }),
 });
 export type UserFormType = z.infer<typeof userSchema>;
+
+// ----->> Institute Schema <<-----
+export const instituteSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(1, "Name is required"),
+});
+export type InstituteFormType = z.infer<typeof instituteSchema>;
+
+// ----->> Department Schema <<-----
+export const departmentSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(1, "Name is required"),
+  institute: z.string().min(1, "Institute is required"),
+  batch: z.string().min(1, "Batch is required"),
+});
+export type DepartmentFormType = z.infer<typeof departmentSchema>;
+
+// ----->> Class Schema <<-----
+export const classSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(1, "Name is required"),
+  department: z.string().min(1, "Department is required"),
+});
+export type ClassFormType = z.infer<typeof classSchema>;  

@@ -20,4 +20,5 @@ export const ROUTES = {
   ADMIN_TIMETABLE: '/admin/timetable',
   ADMIN_UPDATE: '/admin/update',
   ADMIN_USER: '/admin/user',
+  ADMIN_DEPARTMENT: '/admin/department',
 }

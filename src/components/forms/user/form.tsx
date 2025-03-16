@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import { Input, Modal, Select, Spin } from 'antd';
 
 // ----->> Styles <<-----
-import styles from './form.module.scss';
+import styles from '../form.module.scss';
 import { CircleAlert } from '@/assets/icon/rooticon';
 
 // ----->> Utils <<-----
@@ -27,7 +27,6 @@ interface UserFormProps {
 }
 
 // ----->> Constants <<-----
-
 const initialValues: UserFormType = {
   id: "",
   userId: "",

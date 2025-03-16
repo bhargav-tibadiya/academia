@@ -1,146 +1,69 @@
+// Packages
+import { useEffect, useMemo, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+
 // Styles
 import styles from './class.module.scss'
 import { Eye, Edit, ArrowLeft, ArrowRight, Plus } from '../../../../../assets/icon/rooticon'
+import ClassForm from '../../../../../components/forms/class/form';
 
 // Utils & Config
 import useTheme from '../../../../../utils/hooks/useTheme';
-import { useEffect, useMemo, useState } from 'react';
 
 // Constants & Types
+import { Class } from '@/types/store/thunks/dashboard';
+import { getAllClassThunk } from '@/store/thunks/dashboard.thunk';
 
-interface ClassData {
-  name: string,
-  students: string,
-  exams: string,
-  update: string
-}
 const initialFilters = {
   filterKey: undefined,
   filterValue: undefined,
   page: 1,
   recordPerPage: 10
 }
-const dummyClassData: ClassData[] = [
-  {
-    name: "IT_DIV_A",
-    students: "80",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "IT_DIV_B",
-    students: "70",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "IT_DIV_C",
-    students: "56",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "CE_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "CE_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "CE_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "ME_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "ME_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "ME_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "CS_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "CS_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "CS_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-  {
-    name: "MI_DIV_A",
-    students: "91",
-    exams: "12",
-    update: "25"
-  },
-  {
-    name: "MI_DIV_B",
-    students: "81",
-    exams: "16",
-    update: "18"
-  },
-  {
-    name: "MI_DIV_C",
-    students: "36",
-    exams: "08",
-    update: "22"
-  },
-]
 
-
-const Class = () => {
-
-  // Hooks
+const AdminClass = () => {
+  // ----->> Hooks <<-----
   const { theme } = useTheme();
+  const dispatch = useAppDispatch();
+  const { classes } = useAppSelector((state) => state.dashboard);
+
+  // ----->> States <<-----
+  const [filter, setFilter] = useState(initialFilters)
+  const [filteredData, setFilteredData] = useState(classes)
+  const [isOpen, setIsOpen] = useState(false)
+  const [selectedClassId, setSelectedClassId] = useState<string | null>(null)
+  const [mode, setMode] = useState<"view" | "edit">("view");
 
   const stats = useMemo(() => {
-    return dummyClassData.reduce(
+    return classes.reduce(
       (acc, curr) => {
         acc.totalClass += 1;
-        acc.totalStudents += parseInt(curr.students, 10);
-        acc.totalExams += parseInt(curr.exams, 10);
-        acc.totalUpdates += parseInt(curr.update, 10);
+        acc.totalStudents += curr.students.length;
+        acc.totalExams += curr.exams.length;
+        acc.totalUpdates += curr.updates.length;
         return acc;
       },
       { totalClass: 0, totalStudents: 0, totalExams: 0, totalUpdates: 0 }
     );
-  }, [dummyClassData])
+  }, [classes])
 
-  // States
-  const [filter, setFilter] = useState(initialFilters)
-  const [initialData, setInitialData] = useState<ClassData[]>([])
-  const [filteredData, setFilteredData] = useState(dummyClassData)
+  // ----->> Functions <<-----
+  const getAllClasses = async () => {
+    try {
+      await dispatch(getAllClassThunk()).unwrap();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setSelectedClassId(null);
+  }
 
-  // Functions
+  // ----->> Filtering <<-----
   useEffect(() => {
-    const filterData = (classData: ClassData[], filterKey: keyof ClassData | undefined, filterValue: string | undefined, page: number) => {
+    const filterData = (classData: Class[], filterKey: keyof Class | undefined, filterValue: string | undefined, page: number) => {
 
       let tmpData = [...classData];
 
@@ -156,25 +79,29 @@ const Class = () => {
 
       setFilteredData(tmpData);
     }
-    filterData(initialData, filter.filterKey, filter.filterValue, filter.page)
-  }, [filter, initialData])
+    filterData(classes, filter.filterKey, filter.filterValue, filter.page)
+  }, [filter, classes])
+
+  // ----->> API <<-----
+  useEffect(() => {
+    getAllClasses();
+  }, [dispatch])
 
   useEffect(() => {
-    if (!initialData || initialData.length === 0) {
-      setInitialData(dummyClassData)
+    if (selectedClassId) {
+      setIsOpen(true)
     }
-  }, [initialData])
-
+  }, [selectedClassId])
 
   //# Logs  
 
-  return (
+  return (<>
     <div className={`${styles.class_container} ${styles[theme]}`}>
       <div className={styles.title}>Class Model</div>
       <div className={styles.divider}></div>
       <div className={styles.actions}>
         <div className={styles.items}>
-          <div className={styles.item}><span><Plus /></span>Add</div>
+          <div className={styles.item} onClick={() => { setSelectedClassId(null); setMode("edit"); setIsOpen(true) }}><span><Plus /></span>Add</div>
         </div>
         <div className={styles.items}>
           <button
@@ -185,7 +112,7 @@ const Class = () => {
             <span><ArrowLeft /></span>Previous Page
           </button>
           <button
-            disabled={filter.page === Math.ceil(initialData.length / filter.recordPerPage)}
+            disabled={filter.page === Math.ceil(classes.length / filter.recordPerPage)}
             className={styles.item}
             onClick={() => setFilter({ ...filter, page: filter.page + 1 })}
           >
@@ -212,13 +139,13 @@ const Class = () => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{classItem.name}</td>
-                  <td>{classItem.students}</td>
-                  <td>{classItem.exams}</td>
-                  <td>{classItem.update}</td>
+                  <td>{classItem.students.length}</td>
+                  <td>{classItem.exams.length}</td>
+                  <td>{classItem.updates.length}</td>
                   <td>
                     <div className={styles.action_icons}>
-                      <span title='View' className={styles.action_icon}><Eye /></span>
-                      <span title='Edit' className={styles.action_icon}><Edit /></span>
+                      <span title='View' onClick={() => { setSelectedClassId(classItem._id); setMode("view"); setIsOpen(true) }} className={styles.action_icon}><Eye /></span>
+                      <span title='Edit' onClick={() => { setSelectedClassId(classItem._id); setMode("edit"); setIsOpen(true) }} className={styles.action_icon}><Edit /></span>
                     </div>
                   </td>
                 </tr>
@@ -251,7 +178,8 @@ const Class = () => {
         </table>
       </div>
     </div >
-  )
+    <ClassForm mode={mode} isOpen={isOpen} onClose={handleClose} selectedClassId={selectedClassId} />
+  </>)
 }
 
-export default Class
+export default AdminClass;
