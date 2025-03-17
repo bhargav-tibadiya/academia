@@ -138,6 +138,13 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ mode, isOpen, selectedProfile
     onClose();
   }
 
+  const handleFilterOption = (input: string, option?: { label: string, value: string }) => {
+    if (option?.label) {
+      return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+    }
+    return false;
+  }
+
   // ----->> Effects <<-----
   useEffect(() => {
     if (isOpen && selectedProfileId) {
@@ -201,7 +208,15 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ mode, isOpen, selectedProfile
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.form_group}>
                       <label htmlFor="userId">User</label>
-                      <Select {...field} showSearch placeholder='Select User' id="userId" options={userOptions} disabled={mode === "view"} />
+                      <Select
+                        {...field}
+                        showSearch
+                        placeholder='Select User'
+                        id="userId"
+                        options={userOptions}
+                        disabled={mode === "view"}
+                        filterOption={handleFilterOption}
+                      />
                       {error && <div className={styles.error}> <CircleAlert /> User is required</div>}
                     </div>
                   )}

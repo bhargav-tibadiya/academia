@@ -38,12 +38,12 @@ const AdminClass = () => {
     return classes.reduce(
       (acc, curr) => {
         acc.totalClass += 1;
-        acc.totalStudents += curr.students.length;
+        acc.totalUsers += curr.users.length;
         acc.totalExams += curr.exams.length;
         acc.totalUpdates += curr.updates.length;
         return acc;
       },
-      { totalClass: 0, totalStudents: 0, totalExams: 0, totalUpdates: 0 }
+      { totalClass: 0, totalUsers: 0, totalExams: 0, totalUpdates: 0 }
     );
   }, [classes])
 
@@ -127,7 +127,7 @@ const AdminClass = () => {
             <tr>
               <td>No</td>
               <td>Name</td>
-              <td>Students</td>
+              <td>Users</td>
               <td>Exams</td>
               <td>Updates</td>
               <td>Actions</td>
@@ -139,7 +139,7 @@ const AdminClass = () => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{classItem.name}</td>
-                  <td>{classItem.students.length}</td>
+                  <td>{classItem.users.length}</td>
                   <td>{classItem.exams.length}</td>
                   <td>{classItem.updates.length}</td>
                   <td>
@@ -162,7 +162,7 @@ const AdminClass = () => {
           <thead>
             <tr>
               <td>Total Classes</td>
-              <td>Total Students</td>
+              <td>Total Users</td>
               <td>Total Exams</td>
               <td>Total Updates</td>
             </tr>
@@ -170,7 +170,7 @@ const AdminClass = () => {
           <tbody>
             <tr>
               <td>{stats.totalClass}</td>
-              <td>{stats.totalStudents}</td>
+              <td>{stats.totalUsers}</td>
               <td>{stats.totalExams}</td>
               <td>{stats.totalUpdates}</td>
             </tr>

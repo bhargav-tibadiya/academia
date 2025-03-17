@@ -49,7 +49,7 @@ export interface Class {
   _id: string
   name: string
   department: string
-  students: string[]
+  users: string[]
   timeTable: string
   exams: string[]
   updates: string[]
