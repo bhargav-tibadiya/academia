@@ -1,7 +1,7 @@
 @use '../../../../../styles/theme';
 
 
-.user_container {
+.department_container {
   @include theme.flex(column, flex-start, flex-start);
   height: auto;
   width: 100%;
@@ -69,10 +69,8 @@
         }
       }
 
-      .add_item {
-        cursor: not-allowed;
-      }
     }
+
   }
 
   .table,
@@ -155,7 +153,7 @@
   }
 }
 
-.user_container.dark {
+.department_container.dark {
   color: theme.$white100;
   background: theme.$black300;
 

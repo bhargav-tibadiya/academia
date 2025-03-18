@@ -22,7 +22,8 @@ import {
   Edit,
   ArrowLeft,
   ArrowRight,
-  Plus
+  Plus,
+  Building2
 } from 'lucide-react'
 
 export {
@@ -49,5 +50,6 @@ export {
   Edit,
   ArrowLeft,
   ArrowRight,
-  Plus
+  Plus,
+  Building2
 }

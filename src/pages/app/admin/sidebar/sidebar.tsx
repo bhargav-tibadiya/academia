@@ -3,90 +3,112 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 // Styles and Assets
 import styles from './sidebar.module.scss'
-import { logo } from '../../../../assets/image/rootimage'
-import { LayoutDashboard, CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox, Sun, Moon } from '../../../../assets/icon/rooticon'
+import { logo } from '@/assets/image/rootimage'
+import { LayoutDashboard, CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox, Sun, Moon, Building2 } from '@/assets/icon/rooticon'
 
 // Utils & Config
-import useTheme from '../../../../utils/hooks/useTheme'
-import { ROUTES } from '../../../../utils/constants/routes'
+import useTheme from '@/utils/hooks/useTheme'
+import { ROUTES } from '@/utils/constants/routes'
+import { Tooltip } from 'antd'
 
 // Constants
 const menus = [
   {
     icon: <LayoutDashboard />,
     label: "Dashboard",
-    path: ROUTES.ADMIN_DASHBOARD
-  },
-  {
-    icon: <CalendarCheck />,
-    label: "Attendance",
-    path: ROUTES.ADMIN_ATTENDANCE
-  },
-  {
-    icon: <Users />,
-    label: "Class",
-    path: ROUTES.ADMIN_CLASS
-  },
-  {
-    icon: <ReceiptIndianRupee />,
-    label: "Fees",
-    path: ROUTES.ADMIN_FEES
-  },
-  {
-    icon: <Ticket />,
-    label: "Hall Ticket",
-    path: ROUTES.ADMIN_HALLTICKET
+    path: ROUTES.ADMIN_DASHBOARD,
+    description: "Contains all the statistics of the System"
   },
   {
     icon: <School />,
     label: "Institute",
-    path: ROUTES.ADMIN_INSTITUTE
+    path: ROUTES.ADMIN_INSTITUTE,
+    description: "View and manage All Institutes."
   },
   {
-    icon: <Bell />,
-    label: "Notification",
-    path: ROUTES.ADMIN_NOTIFICATION
+    icon: <Building2 />,
+    label: "Department",
+    path: ROUTES.ADMIN_DEPARTMENT,
+    description: "View and manage All Departments."
   },
   {
-    icon: <Goal />,
-    label: "Placement",
-    path: ROUTES.ADMIN_PLACEMENT
+    icon: <Users />,
+    label: "Class",
+    path: ROUTES.ADMIN_CLASS,
+    description: "View and manage All Classes."
   },
   {
     icon: <FileUser />,
     label: "Profile",
-    path: ROUTES.ADMIN_PROFILE
-  },
-  {
-    icon: <FileTerminal />,
-    label: "Request",
-    path: ROUTES.ADMIN_REQUEST
-  },
-  {
-    icon: <PencilLine />,
-    label: "Result",
-    path: ROUTES.ADMIN_RESULT
-  },
-  {
-    icon: <GraduationCap />,
-    label: "Student",
-    path: ROUTES.ADMIN_STUDENT
-  },
-  {
-    icon: <CalendarRange />,
-    label: "Time Table",
-    path: ROUTES.ADMIN_TIMETABLE
-  },
-  {
-    icon: <Inbox />,
-    label: "Update",
-    path: ROUTES.ADMIN_UPDATE
+    path: ROUTES.ADMIN_PROFILE,
+    description: "View and manage User's Profile."
   },
   {
     icon: <UserRound />,
     label: "User",
-    path: ROUTES.ADMIN_USER
-  }
+    path: ROUTES.ADMIN_USER,
+    description: "View and manage All Users."
+  },
+  {
+    icon: <GraduationCap />,
+    label: "Student",
+    path: ROUTES.ADMIN_STUDENT,
+    description: "View and manage All Students."
+  },
+  {
+    icon: <CalendarRange />,
+    label: "Time Table",
+    path: ROUTES.ADMIN_TIMETABLE,
+    description: "View and manage All Time Tables."
+  },
+  {
+    icon: <CalendarCheck />,
+    label: "Attendance",
+    path: ROUTES.ADMIN_ATTENDANCE,
+    description: "View and manage All Attendances."
+  },
+  {
+    icon: <ReceiptIndianRupee />,
+    label: "Fees",
+    path: ROUTES.ADMIN_FEES,
+    description: "View and manage All Fees."
+  },
+  {
+    icon: <Ticket />,
+    label: "Hall Ticket",
+    path: ROUTES.ADMIN_HALLTICKET,
+    description: "View and manage All Hall Tickets."
+  },
+  {
+    icon: <Bell />,
+    label: "Notification",
+    path: ROUTES.ADMIN_NOTIFICATION,
+    description: "View and manage All Notifications."
+  },
+  {
+    icon: <Goal />,
+    label: "Placement",
+    path: ROUTES.ADMIN_PLACEMENT,
+    description: "View and manage All Placements."
+  },
+  {
+    icon: <FileTerminal />,
+    label: "Request",
+    path: ROUTES.ADMIN_REQUEST,
+    description: "View and manage All Requests."
+  },
+  {
+    icon: <PencilLine />,
+    label: "Result",
+    path: ROUTES.ADMIN_RESULT,
+    description: "View and manage All Results."
+  },
+  {
+    icon: <Inbox />,
+    label: "Update",
+    path: ROUTES.ADMIN_UPDATE,
+    description: "View and manage All Updates."
+  },
 ]
 
 const Sidebar = () => {
@@ -115,14 +137,19 @@ const Sidebar = () => {
         <div className={styles.menus}>
           {menus.map((menu, index) => {
             return (
-              <div
+              <Tooltip
                 key={index}
-                className={`${styles.menu} ${location.pathname === menu.path ? styles.active : ""}`}
-                onClick={() => navigate(menu.path)}
+                title={menu.description}
+                placement="right"
               >
-                <div className={styles.icon}>{menu.icon}</div>
-                <div className={styles.name}>{menu.label}</div>
-              </div>
+                <div
+                  className={`${styles.menu} ${location.pathname === menu.path ? styles.active : ""}`}
+                  onClick={() => navigate(menu.path)}
+                >
+                  <div className={styles.icon}>{menu.icon}</div>
+                  <div className={styles.name}>{menu.label}</div>
+                </div>
+              </Tooltip>
             )
           })}
         </div>

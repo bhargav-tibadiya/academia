@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 
 // Configs & Utils
-import { ROUTES } from "../../utils/constants/routes";
+import { ROUTES } from "@/utils/constants/routes";
 
 // Types
 interface TokenType extends JwtPayload {

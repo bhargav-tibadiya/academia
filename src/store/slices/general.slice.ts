@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Constants & Types
-import { GeneralState, Theme } from '../../types/store/slices/types';
+import { GeneralState, Theme } from '@/types/store/slices/types';
 
 const initialState: GeneralState = {
   theme: (localStorage.getItem('academia-theme') as Theme) || 'light',

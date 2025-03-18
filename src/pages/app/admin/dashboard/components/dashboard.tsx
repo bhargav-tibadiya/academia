@@ -3,7 +3,7 @@ import useTheme from "../../../../../utils/hooks/useTheme";
 
 // Styles & Assets
 import styles from "./dashboard.module.scss";
-import { CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox } from '../../../../../assets/icon/rooticon'
+import { CalendarCheck, School, Users, UserRound, ReceiptIndianRupee, Ticket, Bell, Goal, FileUser, FileTerminal, PencilLine, GraduationCap, CalendarRange, Inbox, Building2 } from '@/assets/icon/rooticon'
 
 // Type & Constants
 const stats = [
@@ -31,6 +31,12 @@ const models = [
   {
     icon: <Users />,
     label: "Class",
+    progress: "2.1% growth",
+    count: 150
+  },
+  {
+    icon: <Building2 />,
+    label: "Department",
     progress: "2.1% growth",
     count: 150
   },

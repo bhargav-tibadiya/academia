@@ -1,0 +1,247 @@
+@use '../../styles/theme';
+
+.dialog_content {
+  background-color: theme.$black300;
+  border-radius: 8px;
+
+  .form_container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    max-height: 50vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      background-color: theme.$white100;
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      padding: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: theme.$white800;
+      border-radius: 10px;
+      border: 4px solid theme.$white200;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: theme.$red500;
+    }
+
+    .form_group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      label {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      :global(.ant-input) {
+        border-radius: 4px;
+        border: 1px solid theme.$white400;
+        padding: 4px 8px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .error {
+        min-height: 16px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        color: theme.$red500;
+      }
+    }
+  }
+
+  :global {
+    .ant-modal {
+
+      &-content {
+        background-color: theme.$white100;
+      }
+
+      &-header {
+        background-color: theme.$white100;
+      }
+
+      &-title {
+        color: theme.$black100;
+      }
+
+      &-close {
+        color: theme.$black100;
+
+        &:hover {
+          background-color: theme.$white300;
+          color: theme.$black100;
+        }
+      }
+
+      &-footer {
+        background-color: theme.$white100;
+
+        :global(.ant-btn-primary) {
+          background-color: theme.$black100 ;
+          color: theme.$white100;
+          border: 1px solid theme.$black100;
+
+          &:hover {
+            color: theme.$white100;
+            border: 1px solid theme.$black100;
+            background-color: theme.$black300;
+          }
+        }
+
+        :global(.ant-btn-default) {
+          background-color: theme.$white100;
+          color: theme.$black100;
+          border: 1px solid theme.$white400;
+
+          &:hover {
+            color: theme.$black100;
+            border: 1px solid theme.$white400;
+            background-color: theme.$white200;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.dark.dialog_content {
+
+  .form_container {
+    .form_group {
+      label {
+        color: theme.$white100;
+      }
+
+      :global(.ant-input) {
+        border-radius: 4px;
+        border: 1px solid theme.$white400;
+        padding: 4px 8px;
+        font-size: 14px;
+        font-weight: 400;
+        color: theme.$white100;
+        background-color: theme.$black300;
+
+        &:hover {
+          border: 1px solid theme.$purple500;
+        }
+
+        &:disabled {
+          color: theme.$white400;
+        }
+      }
+
+      :global(.ant-select-selector) {
+        background-color: theme.$black300;
+        color: theme.$white100;
+        border: 1px solid theme.$white400;
+
+        &:hover {
+          border: 1px solid theme.$purple500;
+        }
+      }
+
+      :global(.ant-select-arrow) {
+        color: theme.$white100;
+      }
+
+      :global(.ant-select-dropdown) {
+        background-color: theme.$black300;
+        color: theme.$white100;
+      }
+
+      :global(.ant-select-item-option-selected) {
+        background-color: theme.$purple500;
+        color: theme.$white100;
+      }
+
+      .error {
+        min-height: 16px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        color: theme.$red500;
+      }
+    }
+  }
+
+  :global {
+    .ant-modal {
+      &-content {
+        background-color: theme.$black300;
+      }
+
+      &-header {
+        background-color: theme.$black300;
+      }
+
+      &-title {
+        color: theme.$white100;
+      }
+
+      &-close {
+        color: theme.$white100;
+
+        &:hover {
+          background-color: theme.$black400;
+          color: theme.$white100;
+        }
+      }
+
+      &-footer {
+        background-color: theme.$black300;
+
+        :global(.ant-btn-primary) {
+          background-color: theme.$white100 ;
+          color: theme.$black100;
+          border: 1px solid theme.$white100;
+
+          &:hover {
+            color: theme.$black100;
+            border: 1px solid theme.$white100;
+            background-color: theme.$white300;
+          }
+        }
+
+        :global(.ant-btn-default) {
+          background-color: theme.$black300;
+          color: theme.$white100;
+          border: 1px solid theme.$black400;
+
+          &:hover {
+            color: theme.$white100;
+            border: 1px solid theme.$black400;
+            background-color: theme.$black400;
+          }
+        }
+      }
+    }
+  }
+}
